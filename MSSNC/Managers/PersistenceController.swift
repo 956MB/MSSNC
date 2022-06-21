@@ -73,11 +73,11 @@ struct PersistenceController {
 //        let newStickNote = StickNote(title: "Untitled", lastOpened: Date(), open: false, accent: NoteColors.Yellow, content: "", x: 0, y: 0, w: 350, h: 600)
         let dupNote        = StickyNote(context: context)
         dupNote.id         = UUID()
-        dupNote.title      = "local_untitlednote".localized()
+        dupNote.title      = title
         dupNote.lastOpened = Date()
         dupNote.open       = open
         dupNote.accent     = accent
-        dupNote.content    = ""
+        dupNote.content    = content
         dupNote.posX       = posX
         dupNote.posY       = posY
         dupNote.sizeW      = sizeW
