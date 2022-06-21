@@ -112,7 +112,7 @@ struct MSSNCSettingsScreen: View {
 
                     /// colors section
                     VStack(alignment: .leading) {
-                        SettingsSectionTitle(titleKey: "local_settingscolor")
+                        SettingsSectionTitle(titleKey: "local_settingscolor".localized())
 
                         /// PICKER: appearance
                         SettingsPicker(title: "local_settingsappearance".localized(), key: "key_appearance", change: self.$appearance, opacity: 1.0, useAccents: self.$useNoteAccents, content: {
@@ -161,7 +161,7 @@ struct MSSNCSettingsScreen: View {
             .background(VisualEffectBackground(material: NSVisualEffectView.Material.menu, blendingMode: NSVisualEffectView.BlendingMode.withinWindow))
 //            .cornerRadius(6)
 ////            .shadow(color: Color("SettingsContainerBorder"), radius: 5, x: 0, y: 0)
-//            // MARK: border every side but right 2/3 pixels thick, instead of intended 1 pixel thick, BUG, apparently doesnt happen when not using display, using just macbook screen
+//            // MARK: border every side but right 2/3 pixels thick, instead of intended 1 pixel thick, BUG, apparently doesnt happen when not using display, using just macbook screen, think just a 1080p scaling issue
             .overlay(
                 RoundedRectangle(cornerRadius: 6)
                     .stroke(Color("SettingsContainerBorder"), lineWidth: 1)

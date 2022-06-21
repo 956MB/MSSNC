@@ -50,18 +50,15 @@ struct MSSNCListScreen: View {
 
                     /// notes cells
                     ScrollView {
-//                        VStack(spacing: 10) {
                             ForEach(self.noteCells.getCellsSorted()) { cell in
                                 AnyView(_fromValue: cell.cellView)
                                     .padding([.leading, .trailing], 10)
                                     .padding([.bottom], 2)
                             }
-
 //                            ForEach(self.stickyNotes) { note in
 //                                NoteCellView(fetchedNote: note)
 //                                    .environmentObject(NoteWindowProperties())
 //                            }
-//                        }
                     }
                     .padding(.top, 48)
                     .disabled(self.mainWindowProperties.settingsOpen)
@@ -158,7 +155,7 @@ struct MSSNCListScreen: View {
         /// CREATE/COMMAND: creates new note
         .onReceive(self.MSSNCGlobal.$createNewNoteCommand, perform: { create in
             if (create) {
-                let newStickyNote = PersistenceController.shared.addStickyNote(context: self.viewContext, save: true)
+                let newStickyNote = PersistenceController.shared.addStickyNote(context: self.viewContext, save: true, originWindow: self.mainWindowProperties.frame)
                 createNote(createdStickyNote: newStickyNote)
                 self.MSSNCGlobal.createNewNoteCommand = false
             }

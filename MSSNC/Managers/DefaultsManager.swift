@@ -53,8 +53,6 @@ class DefaultsManager: ObservableObject {
         self.appearance            = key_appearance
         self.defaultAccent         = key_defaultAccent
         self.useNoteAccents        = key_useNoteAccents
-
-//        print(self.appearance)
     }
 
     /// Sets supplied key in DefaultsManager with supplied value, then saves to UserDefaults.standard

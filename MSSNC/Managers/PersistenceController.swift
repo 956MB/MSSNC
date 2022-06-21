@@ -38,8 +38,15 @@ struct PersistenceController {
     /// Create new default Note and save CoreData model context
     /// - Parameter context: Currently used CoreData context, NSManagedObjectContext
     /// - Returns: StickyNote
-    public func addStickyNote(context: NSManagedObjectContext, save: Bool) -> StickyNote {
+    public func addStickyNote(context: NSManagedObjectContext, save: Bool, originWindow: CGRect) -> StickyNote {
 //        let newStickNote = StickNote(title: "Untitled", lastOpened: Date(), open: false, accent: NoteColors.Yellow, content: "", x: 0, y: 0, w: 350, h: 600)
+
+//        Use origin windows x, y, w, h to position new note window to the right
+        let newX = originWindow.origin.x + originWindow.size.width + 8
+        let newY = originWindow.origin.y
+        let newW = originWindow.size.width
+        let newH = originWindow.size.height
+
         let newSNote        = StickyNote(context: context)
         newSNote.id         = UUID()
         newSNote.title      = "local_untitlednote".localized()
@@ -47,10 +54,10 @@ struct PersistenceController {
         newSNote.open       = true
         newSNote.accent     = def.defaultAccent
         newSNote.content    = ""
-        newSNote.posX       = 0
-        newSNote.posY       = 0
-        newSNote.sizeW      = 306
-        newSNote.sizeH      = 544
+        newSNote.posX       = Float(newX)
+        newSNote.posY       = Float(newY)
+        newSNote.sizeW      = Float(newW)
+        newSNote.sizeH      = Float(newH)
 
         if (save) {
             saveContext(context: context)
