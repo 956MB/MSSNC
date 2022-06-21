@@ -51,38 +51,7 @@ open class StickNote : NSObject {
         self.windowSizeW = w
         self.windowSizeH = h
     }
-
-//    public enum SNoteCodingKeys: String, CodingKey {
-//        case title       = "title"
-//        case lastOpened  = "key"
-//        case open        = "open"
-//        case accent      = "accent"
-//        case content     = "content"
-//        case windowPosX  = "window_pos_x"
-//        case windowPosY  = "window_pos_y"
-//        case windowSizeW = "window_size_w"
-//        case windowSizeH = "window_sizes_h"
-//    }
-//
-//    public required init(from decoder: Decoder) throws {
-//
-//        let container = try decoder.container(keyedBy: SNoteCodingKeys.self)
-//
-//        self.title       = try container.decodeIfPresent(String.self, forKey: .title)
-//        self.lastOpened  = try container.decodeIfPresent(String.self, forKey: .lastOpened)
-//        self.open        = try container.decodeIfPresent(Bool.self, forKey: .open)
-//        self.accent      = try container.decodeIfPresent(NoteColors.self, forKey: .accent)
-//        self.content     = try container.decodeIfPresent(String.self, forKey: .content)
-//        self.windowPosX  = try container.decodeIfPresent(CGFloat.self, forKey: .windowPosX)
-//        self.windowPosY  = try container.decodeIfPresent(CGFloat.self, forKey: .windowPosY)
-//        self.windowSizeW = try container.decodeIfPresent(CGFloat.self, forKey: .windowSizeW)
-//        self.windowSizeH = try container.decodeIfPresent(CGFloat.self, forKey: .windowSizeH)
-//    }
 }
-
-//func formNote(stickNote: StickNote) -> NoteStruct {
-//    return NoteStruct(title: stickNote.title, lastOpened: "5:33 AM", accentColor: Color(hex: stickNote.accent.rawValue), dimensions: NoteWindow(posX: stickNote.windowPosX, posY: stickNote.windowPosY, winW: stickNote.windowSizeW, winH: stickNote.windowSizeW), content: stickNote.content)
-//}
 
 /// Note properties
 public class NoteStruct: ObservableObject {

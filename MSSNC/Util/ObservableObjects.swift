@@ -52,7 +52,6 @@ public class NoteWindowProperties: ObservableObject {
 }
 
 
-
 public class NoteCopyObject: ObservableObject {
     static let shared = NoteCopyObject()
 
@@ -89,23 +88,10 @@ class NoteCells: ObservableObject {
     }
     func addCell(_ key: Int, _ cell: NoteCell) {
         self.cells[key] = cell
-//        self.cells.append(cell)
-//        self.cells.insert(cell, at: 0)
         self.cellIndex += 1
     }
     func deleteCell(_ index: Int) {
-//        self.cellCount -= 1
-//        print("before delete cell INSIDE")
-//        if let value = self.cells.removeValue(forKey: index) {
-//            print("The value \(value) was removed.")
-//        }
-//        for (item) in self.cells.enumerated() {
-//            print("\(item.offset): \(item.element.value.id)")
-//        }
-//        print(index)
-//        self.cells.removeValue(forKey: index)
         self.cells[index] = nil
-//        self.cells.remove(at: index)
     }
     func duplicateCell(_ index: Int) {
         self.cellIndex += 1
@@ -113,7 +99,7 @@ class NoteCells: ObservableObject {
     }
 
     func getCellsSorted() -> [NoteCell] {
-        // MARK: potential point of performance deg, sorting dict and appending to new array every list update could be bad
+        // MARK: - potential point of performance deg, sorting dict and appending to new array every list update could be bad
         // could myabe just give back already sorted array if no new note added, instead of sorting again every time and returning that
         let sortedCells = self.cells.sorted{ $0.key > $1.key }
         var cells: [NoteCell] = []

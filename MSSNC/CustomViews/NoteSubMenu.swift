@@ -23,8 +23,6 @@ struct NoteSubMenu: View {
             HStack(alignment: .center, spacing: 8) {
                 SubMenuButton(buttonAction: {self.listAction()}, subMenuShown: self.$subMenuShown, buttonImage: "text.alignleft", buttonText: (noteWindowProperties.frame.size.width <= 300 && self.noteWindowProperties.noteOpen) ? "local_noteslistshort".localized() : "local_noteslist".localized(), buttonHelp: "local_noteslist".localized())
                 SubMenuButton(buttonAction: {self.deleteAction()}, subMenuShown: self.$subMenuShown, buttonImage: "trash", buttonText: (noteWindowProperties.frame.size.width <= 300 && self.noteWindowProperties.noteOpen) ? "local_deletenoteshort".localized() : "local_deletenote".localized(), buttonHelp: "local_deletenote".localized())
-//                SubMenuButton(buttonAction: {self.listAction()}, subMenuShown: self.$subMenuShown, buttonImage: "text.alignleft", buttonText: "local_noteslist".localized(), buttonHelp: "local_noteslist".localized())
-//                SubMenuButton(buttonAction: {self.deleteAction()}, subMenuShown: self.$subMenuShown, buttonImage: "trash", buttonText: "local_deletenote".localized(), buttonHelp: "local_deletenote".localized())
             }
             .padding(8)
         }

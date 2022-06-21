@@ -107,21 +107,9 @@ struct ToolbarButtonsStack: View {
         HStack {
             HStack(spacing: 6) {
                 ToolbarButton(buttonAction: {self.subMenuShown.toggle()}, hover: self.$menuHover, imageName: "ellipsis", helpKey: "local_menu", accent: self.$accent, defaultBackground: Color(hex: 0x444444).opacity(0.0), hoveredBackground: !self.MSSNCGlobal.confirmDeleteNoteWindowShown ? ifYellowBG(accent: self.accent) : Color(hex: 0x444444).opacity(0.0))
-//                ToolbarButton(buttonAction: {self.testSpeakText()}, hover: self.$menuHover, imageName: "ellipsis", helpKey: "local_menu", accent: self.$accent, defaultBackground: Color(hex: 0x444444).opacity(0.0), hoveredBackground: !self.MSSNCGlobal.confirmDeleteNoteWindowShown ? ifYellowBG(accent: self.accent) : Color(hex: 0x444444).opacity(0.0))
                 ToolbarButton(buttonAction: {self.MSSNCGlobal.duplicateNoteWindowIndex = self.cellIndex}, hover: self.$addHover, imageName: "plus", helpKey: "local_newnote", accent: self.$accent, defaultBackground: Color(hex: 0x444444).opacity(0.0), hoveredBackground: !self.MSSNCGlobal.confirmDeleteNoteWindowShown ? ifYellowBG(accent: self.accent) : Color(hex: 0x444444).opacity(0.0))
             }
             .padding(.trailing, 6).padding(.top, 1)
         }
-    }
-
-    func testSpeakText() {
-//        let utterance = AVSpeechUtterance(string: "Hello world")
-        let utterance = AVSpeechUtterance(string: "Oikein hyvää ja rauhallista joulua kaikille Viaplayn katsojille!")
-        utterance.voice = AVSpeechSynthesisVoice(language: "fi-FI")
-//        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        utterance.rate = 0.3
-
-        let synthesizer = AVSpeechSynthesizer()
-        synthesizer.speak(utterance)
     }
 }

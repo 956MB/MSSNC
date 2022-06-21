@@ -110,15 +110,6 @@ struct NoteTitlePopover: View {
 }
 
 
-
-// This extension removes the focus ring entirely.
-//extension NSTextField {
-//    open override var focusRingType: NSFocusRingType {
-//        get { .none }
-//        set { }
-//    }
-//}
-
 struct SearchTextField: View {
     @Binding var query   : String
     @State var isFocused : Bool   = false

@@ -106,7 +106,6 @@ struct MSSNCSettingsScreen: View {
                         })
 
                     }
-//                    .padding([.top], 15)
                     .toggleStyle(CheckboxToggleStyle())
 
 
@@ -157,9 +156,7 @@ struct MSSNCSettingsScreen: View {
                     }
                 }
             }
-//            .background(RoundedCorners(tl: 6, tr: 6, bl: 6, br: 6).fill(Color("SettingsContainerBG")))
             .background(VisualEffectBackground(material: NSVisualEffectView.Material.menu, blendingMode: NSVisualEffectView.BlendingMode.withinWindow))
-//            .cornerRadius(6)
 ////            .shadow(color: Color("SettingsContainerBorder"), radius: 5, x: 0, y: 0)
 //            // MARK: border every side but right 2/3 pixels thick, instead of intended 1 pixel thick, BUG, apparently doesnt happen when not using display, using just macbook screen, think just a 1080p scaling issue
             .overlay(
@@ -170,7 +167,6 @@ struct MSSNCSettingsScreen: View {
             Spacer()
         }
         .padding([.leading, .trailing], 15)
-//        .padding([.bottom], 2).padding(.top, 37)
         .padding([.bottom], 7).padding(.top, 53)
 
         /// FONT: change of font size in default manager

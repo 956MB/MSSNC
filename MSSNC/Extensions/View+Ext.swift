@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+/// Gives views that classic macOS blurred glass transparent background
 struct VisualEffectBackground: NSViewRepresentable {
 
     let material     : NSVisualEffectView.Material
@@ -28,6 +29,7 @@ struct VisualEffectBackground: NSViewRepresentable {
     }
 }
 
+/// Rounds individual corners of view
 struct RoundedCorners: Shape {
     var tl : CGFloat = 0.0
     var tr : CGFloat = 0.0

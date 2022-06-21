@@ -77,6 +77,5 @@ var line: some View {
     VStack {
         Divider()
         .padding(.leading, 5)
-//        .padding(.trailing, 15)
     }
 }

@@ -51,15 +51,6 @@ struct NoteCellView: View {
     }
 
     var body: some View {
-//        Execute {
-//            if (!self.noteWindowProperties.windowOpenCheck) {
-//                print("inside window [\(self.cellIndex)] open check [\(self.noteWindowProperties.noteOpen)]")
-//                if (self.noteWindowProperties.noteOpen) {
-//                    self.MSSNCGlobal.createNewWindow = true
-//                }
-//                self.noteWindowProperties.windowOpenCheck = true
-//            }
-//        }
         VStack(spacing: 0) {
             VStack(spacing: 7) {
                 /// accent bar
@@ -75,12 +66,6 @@ struct NoteCellView: View {
                         Text(self.title)
                             .font(.system(size: 9))
                             .foregroundColor(Color("NoteCellDotsFG").opacity(0.50))
-//                            .italic()
-//                            .padding([.top], 1)
-//                        Text("·")
-//                            .font(.system(size: 9))
-//                            .foregroundColor(ifUseAccent())
-//                            .padding([.leading], 4)
                     }
                     Spacer()
                     /// corner text
@@ -90,7 +75,7 @@ struct NoteCellView: View {
                             .foregroundColor(getCornerAccentColor().opacity(0.90))
 //                            .padding([.leading], 2)
                             .padding([.trailing], 2)
-                            // MARK: padding on triple dot buttons too small, hard to click
+                            // MARK: - padding on triple dot buttons too small, hard to click
                             .onHover {_ in
                                 if (!self.MSSNCGlobal.confirmDeleteMainShown) { self.cellCornerHovered.toggle() }
                             }
@@ -124,7 +109,6 @@ struct NoteCellView: View {
                     .padding(.leading, 15).padding(.trailing, 20)
                 }
             }
-//            .background(RoundedCorners(tl: 4, tr: 4, bl: 0, br: 0).fill(self.cellHovered ? Color(hex: 0xFFFFFF).opacity(0.095) : Color(hex: 0xFFFFFF).opacity(0.075)))
             .background(RoundedCorners(tl: 4, tr: 4, bl: 0, br: 0).fill(self.cellHovered ? Color("NoteCellViewBGHovered") : Color("NoteCellViewBG")))
 
             /// bottom cell note edge
@@ -137,13 +121,9 @@ struct NoteCellView: View {
 
                 NoteEdgeRound(bgFill: self.cellHovered ? Color("NoteCellViewBGHovered") : Color("NoteCellViewBG"), fgFill: self.cellHovered ? Color("NoteEdgeBGHovered") : Color("NoteEdgeBG"))
             }
-//            .background(RoundedCorners(tl: 0, tr: 0, bl: 4, br: 0).fill(Color.clear))
         }
-//        .background(Color(hex: 0x1B1B1C) // any non-transparent background
-//            .shadow(color: .black.opacity(0.4), radius: 10, x: 0, y: 0)
-//        )
         .onHover {_ in
-            // MARK: invisible part of note edge detected on hover, change
+            // MARK: - invisible part of note edge detected on hover, change
             if (!self.MSSNCGlobal.confirmDeleteMainShown) { self.cellHovered.toggle() }
         }
         .gesture(TapGesture(count: 2).onEnded {
@@ -155,7 +135,7 @@ struct NoteCellView: View {
         })
 
 
-        // MARK: WINDOW RECEIVERS
+        // MARK: - WINDOW RECEIVERS
         ///
         /// OPEN/CLOSE: note opened / closed
         .onReceive(self.noteWindowProperties.$noteOpen, perform: { noteOpen in
@@ -196,12 +176,11 @@ struct NoteCellView: View {
 //                self.fetchedNote.sizeH = Float((self.pairedNoteWindow?.frame.height)!)
 //            }
 //        })
-        // MARK: NOTE WINDOW ACTIONS
+        // MARK: - NOTE WINDOW ACTIONS
         /// CREATE: creates window for already existing note
         .onReceive(self.MSSNCGlobal.$createNewWindow, perform: { newWindow in
             if (newWindow && self.noteWindowProperties.noteOpen) {
                 // MARK: BUG: multiple windows being created for note cells, (two notes = 1, 2) (three notes = 1, 2, 3) IDK
-//                print("NEW WINDOW [\(self.cellIndex)] [\(self.noteWindowProperties.noteOpen)]")
                 self.pairedNoteWindow            = nil
                 self.pairedNoteWindow            = newNoteWindow(noteWindowProps: self.noteWindowProperties, note: self.$note, title: self.$title, useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, noteContent: self.$cellContent, cellIndex: self.$cellIndex)
                 self.newNote                     = false
@@ -233,12 +212,11 @@ struct NoteCellView: View {
 
                 self.MSSNCGlobal.duplicateNoteWindow      = true
                 self.MSSNCGlobal.duplicateNoteWindowIndex = -1
-//                print("note duplicatedDD")
             }
         })
 
 
-        // MARK: CELL RECEIVERS
+        // MARK: - CELL RECEIVERS
         ///
         /// SHOW ACCENT: sets note accent to grey if $useNoteAccents false, otherwise use selecedAccent
         .onReceive(DefaultsManager.shared.$useNoteAccents, perform: { showAccent in
@@ -271,7 +249,7 @@ struct NoteCellView: View {
         })
 
 
-        // MARK: DOCK RECEIVERS
+        // MARK: - DOCK RECEIVERS
         ///
         /// SHOW: makes note window key and brings to front on $showAllNotes change
         .onReceive(self.mainWindowProperties.$showAllNotes, perform: { showAllNotes in
@@ -333,11 +311,10 @@ struct NoteCellView: View {
 
     /// triggers note to be renamed either with popover in note window, or text box in note cell
     func openNoteRename() {
-        
     }
 
 
-    // MARK: UTILS
+    // MARK: - UTILS
     ///
 
     /// Returns Color for cell accent bar, self.selectedAccent if useNoteAccents true, otherwise gray
@@ -363,22 +340,14 @@ struct NoteCellView: View {
         if (self.cellHovered || self.isPopover) {
             return "· · ·"
         } else {
-            if (self.noteWindowProperties.noteOpen) {
-                return "local_open".localized()
-            } else {
-                return formattedCornerDate(lastOpened: self.note.lastOpened)
-            }
+            return (self.noteWindowProperties.noteOpen) ? "local_open".localized() : formattedCornerDate(lastOpened: self.note.lastOpened)
         }
     }
     /// Returns note cell corner text color if cell hovered or not
     /// - Returns: Color
     func getCornerAccentColor() -> Color {
         if (self.cellHovered || self.isPopover) {
-            if (self.cellCornerHovered) {
-                return Color("NoteCellDotsFGHovered")
-            } else {
-                return Color("NoteCellDotsFG")
-            }
+            return (self.cellCornerHovered) ? Color("NoteCellDotsFGHovered") : Color("NoteCellDotsFG")
         }
 
         return self.showAccent ? self.useAccent : Color.secondary

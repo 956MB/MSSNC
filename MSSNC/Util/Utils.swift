@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// Allows mid view code execution by running code then returning EmptyView()
 struct Execute : View {
     init( _ exec: () -> () ) {
         exec()
@@ -17,6 +18,9 @@ struct Execute : View {
     }
 }
 
+/// Formats supplied date (Date) into simplified strings
+/// - Parameter lastOpened: Note last opened date (Date)
+/// - Returns: Formatted date string (String)
 func formattedCornerDate(lastOpened: Date) -> String {
     let dateFormatter = DateFormatter()
 

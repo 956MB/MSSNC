@@ -119,7 +119,7 @@ struct MSSNCListScreen: View {
                 .frame(height: 37)
                 .padding([.trailing], 6)
             }
-            // MARK: temporarily removing these modifiers to counteract the opposite effects of the window focus bug, fix klater
+            // MARK: temporarily removing these modifiers to counteract the opposite effects of the window focus bug, fix later
 //            .disabled((!self.windowFocused || self.MSSNCGlobal.confirmDeleteMainShown))
 //            .opacity((self.windowFocused && !self.MSSNCGlobal.confirmDeleteMainShown) ? 0.35 : 1.0)
             // fuck this bug ass ^
@@ -141,14 +141,12 @@ struct MSSNCListScreen: View {
         /// SAVE/CONTEXT: saves current CoreData context
         .onReceive(self.MSSNCGlobal.$saveCoreDataContext, perform: { saveContext in
             if (saveContext) {
-//                print("context SAVEDD")
                 PersistenceController.shared.saveContext(context: self.viewContext)
                 self.MSSNCGlobal.saveCoreDataContext = false
             }
         })
         /// FOCUS: sets main window focus
         .onReceive(self.mainWindowProperties.$focus, perform: { focused in
-//            print("focus change main window \(!focused)")
             self.windowFocused = !focused
             self.MSSNCGlobal.focusedNote = -1
         })
@@ -172,17 +170,13 @@ struct MSSNCListScreen: View {
                 self.viewContext.delete(stickyNoteDel)
                 self.MSSNCGlobal.saveCoreDataContext = true
 
-//                print("before delete cell")
-//                print(deleteCellIndex)
-//                print(self.noteCells.cellIndex)
-//                print(self.noteCells.cells.count)
+//                print("before delete cell", deleteCellIndex, self.noteCells.cellIndex, self.noteCells.cells.count)
                 self.noteCells.deleteCell(deleteCellIndex)
             }
         })
         /// DUPLICATE: duplicates note window with supplied cellIndex
         .onReceive(self.MSSNCGlobal.$duplicateNoteWindow, perform: { duplicateWindow in
             if (duplicateWindow) {
-//                print("pre dup window")
                 self.duplicateNote(createWindow: true)
                 self.MSSNCGlobal.duplicateNoteWindow = false
             }
@@ -200,7 +194,6 @@ struct MSSNCListScreen: View {
     /// - Parameter createdStickyNote: supplied StickyNote
     func createNote(createdStickyNote: StickyNote) {
         let newIndex = self.noteCells.cellIndex
-//        let newIndex = createdStickyNote.id
         createNoteObject(index: newIndex, fetchedNote: createdStickyNote)
     }
 
@@ -241,8 +234,7 @@ struct MSSNCListScreen: View {
         let noteCellView = NoteCellView(fetchedNote: fetchedNote, note: noteStruct, cellIndex: index, newNote: false).environmentObject(winProps)
         let noteCell     = NoteCell(noteOpen: fetchedNote.open, useAccent: Color(hex: getHex(fetchedNote.accent).rawValue), selectedAccent: Color(hex: getHex(fetchedNote.accent).rawValue), content: fetchedNote.content ?? "", cellView: noteCellView)
 
-//        print("new added index:")
-//        print(index)
+//        print("new added index:", index)
         self.noteCells.addCell(index, noteCell)
     }
 }

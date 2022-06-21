@@ -16,15 +16,14 @@ struct NoteAccentSelector: View {
     var body: some View {
         HStack(alignment: .center) {
             HStack(alignment: .center, spacing: 0) {
-                AccentButtonView(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, subMenuShown: self.$subMenuShown, accentId: Color(hex: NoteColors.Red.rawValue), accentKey: "local_accentred", _tl: 7, _tr: 0, _bl: 7, _br: 0)
-                AccentButtonView(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, subMenuShown: self.$subMenuShown, accentId: Color(hex: NoteColors.Orange.rawValue), accentKey: "local_accentorange", _tl: 0, _tr: 0, _bl: 0, _br: 0)
-                AccentButtonView(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, subMenuShown: self.$subMenuShown, accentId: Color(hex: NoteColors.Yellow.rawValue), accentKey: "local_accentyellow", _tl: 0, _tr: 0, _bl: 0, _br: 0)
-                AccentButtonView(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, subMenuShown: self.$subMenuShown, accentId: Color(hex: NoteColors.Green.rawValue), accentKey: "local_accentgreen", _tl: 0, _tr: 0, _bl: 0, _br: 0)
-                AccentButtonView(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, subMenuShown: self.$subMenuShown, accentId: Color(hex: NoteColors.Blue.rawValue), accentKey: "local_accentblue", _tl: 0, _tr: 0, _bl: 0, _br: 0)
-                AccentButtonView(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, subMenuShown: self.$subMenuShown, accentId: Color(hex: NoteColors.Purple.rawValue), accentKey: "local_accentpurple", _tl: 0, _tr: 0, _bl: 0, _br: 0)
-                AccentButtonView(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, subMenuShown: self.$subMenuShown, accentId: Color(hex: NoteColors.Pink.rawValue), accentKey: "local_accentpink", _tl: 0, _tr: 7, _bl: 0, _br: 7)
+                AccentButtonView(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, subMenuShown: self.$subMenuShown, accentId: Color(hex: NoteColors.Red.rawValue), accentKey: "local_accentred", _tl: 7, _bl: 7)
+                AccentButtonView(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, subMenuShown: self.$subMenuShown, accentId: Color(hex: NoteColors.Orange.rawValue), accentKey: "local_accentorange")
+                AccentButtonView(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, subMenuShown: self.$subMenuShown, accentId: Color(hex: NoteColors.Yellow.rawValue), accentKey: "local_accentyellow")
+                AccentButtonView(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, subMenuShown: self.$subMenuShown, accentId: Color(hex: NoteColors.Green.rawValue), accentKey: "local_accentgreen")
+                AccentButtonView(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, subMenuShown: self.$subMenuShown, accentId: Color(hex: NoteColors.Blue.rawValue), accentKey: "local_accentblue")
+                AccentButtonView(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, subMenuShown: self.$subMenuShown, accentId: Color(hex: NoteColors.Purple.rawValue), accentKey: "local_accentpurple")
+                AccentButtonView(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, subMenuShown: self.$subMenuShown, accentId: Color(hex: NoteColors.Pink.rawValue), accentKey: "local_accentpink", _tr: 7, _br: 7)
             }
-//            .padding(9)
         }
         .frame(minWidth: 0, maxWidth: .infinity)
         .background(RoundedCorners(tl: 7, tr: 7, bl: 7, br: 7).fill(Color("SubMenuButtonContainerBG")))
@@ -41,10 +40,10 @@ struct AccentButtonView: View {
     var accentId                   : Color
     var accentKey                  : String
 
-    var _tl: CGFloat
-    var _tr: CGFloat
-    var _bl: CGFloat
-    var _br: CGFloat
+    var _tl: CGFloat = 0
+    var _tr: CGFloat = 0
+    var _bl: CGFloat = 0
+    var _br: CGFloat = 0
 
     var body: some View {
         Button(action: {
@@ -54,23 +53,7 @@ struct AccentButtonView: View {
             self.selectedAccent = accentId
             self.subMenuShown.toggle()
         }) {
-//            ZStack {
-//                Circle()
-//                    .fill(self.accentId)
-//                    .frame(minWidth: 25, minHeight: 25)
-////                Spacer()
-//                Image(systemName: "checkmark")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(width: 11, height: self.accentButtonHovered ? 17 : 14)
-//                    .foregroundColor(self.selectedAccent == self.accentId ? ifYellowFG(accent: self.selectedAccent) : Color.clear)
-////                Spacer()
-//            }
-//            .frame(minWidth: 11, minHeight: self.accentButtonHovered ? 14 : 11)
-//            .padding(6).padding([.top, .bottom], self.accentButtonHovered ? -1 : 3)
-//            .contentShape(RoundedRectangle(cornerSize: CGSize(width: 7, height: 7)))
-
-            /// test
+            /// checkmark overlay
             self.accentId
                 .overlay(
                     Image(systemName: "checkmark")
@@ -83,9 +66,7 @@ struct AccentButtonView: View {
                 .frame(minWidth: 0, minHeight: 37, maxHeight: 37)
         }
         .buttonStyle(PlainButtonStyle())
-//        .background(self.accentId)
         .onHover {_ in self.accentButtonHovered.toggle()}
-//        .cornerRadius(7)
         .help(self.accentKey.localized())
     }
 }
