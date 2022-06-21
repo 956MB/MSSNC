@@ -74,17 +74,17 @@ struct MSSNCListScreen: View {
         }).toolbarContent(toolbar: {
             ZStack {
                 /// sticky notes / settings title
-//                HStack {
-//                    Spacer()
-//                    Text(self.mainWindowProperties.settingsOpen ? "local_settingstitle".localized() : "local_stickynotestitle".localized())
-//                        .font(.system(size: 13))
-//                        .fontWeight(.semibold)
-//                        .lineLimit(1)
-//                        .truncationMode(.tail)
-//                        .foregroundColor(Color.primary.opacity(0.95))
-////                        .opacity(!self.MSSNCGlobal.confirmDeleteMainShown ? 1 : 0.5)
-//                    Spacer()
-//                }
+                HStack {
+                    Spacer()
+                    Text(self.mainWindowProperties.settingsOpen ? "local_settingstitle".localized() : "local_stickynotestitle".localized())
+                        .font(.system(size: 13))
+                        .fontWeight(.semibold)
+                        .lineLimit(1)
+                        .truncationMode(.tail)
+                        .foregroundColor(Color.primary.opacity(0.95))
+                        .opacity(!self.MSSNCGlobal.confirmDeleteMainShown ? 1 : 0.5)
+                    Spacer()
+                }
                 HStack(alignment: .center) {
                     Spacer()
 
@@ -207,7 +207,7 @@ struct MSSNCListScreen: View {
     func duplicateNote(createWindow: Bool) {
         let copyNote = self.noteCopyObject.note
 
-        let duplicateNote = PersistenceController.shared.duplicateStickyNote(context: self.viewContext, title: self.noteCopyObject.title, open: createWindow, accent: getFloat(self.noteCopyObject.accent), content: "", posX: Float(copyNote.dimensions.posX) + (Float(copyNote.dimensions.winW)+8), posY: Float(copyNote.dimensions.posY), sizeW: Float(copyNote.dimensions.winW), sizeH: Float(copyNote.dimensions.winH), save: true)
+        let duplicateNote = PersistenceController.shared.duplicateStickyNote(context: self.viewContext, title: copyNote.title, open: createWindow, accent: getFloat(self.noteCopyObject.accent), content: copyNote.content, posX: Float(copyNote.dimensions.posX) + (Float(copyNote.dimensions.winW)+8), posY: Float(copyNote.dimensions.posY), sizeW: Float(copyNote.dimensions.winW), sizeH: Float(copyNote.dimensions.winH), save: true)
         createNote(createdStickyNote: duplicateNote)
     }
 
