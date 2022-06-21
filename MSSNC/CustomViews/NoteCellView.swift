@@ -75,7 +75,7 @@ struct NoteCellView: View {
                         Text(self.title)
                             .font(.system(size: 9))
                             .foregroundColor(Color("NoteCellDotsFG").opacity(0.50))
-                            .italic()
+//                            .italic()
 //                            .padding([.top], 1)
 //                        Text("·")
 //                            .font(.system(size: 9))
@@ -95,7 +95,7 @@ struct NoteCellView: View {
                                 if (!self.MSSNCGlobal.confirmDeleteMainShown) { self.cellCornerHovered.toggle() }
                             }
                             .popover(isPresented: self.$isPopover, arrowEdge: .bottom) {
-                                NoteCellPopover(openAction: {self.noteWindowProperties.noteOpen ? self.checkOpenClose() : self.checkOpenClose()}, duplicateAction: {self.MSSNCGlobal.duplicateNoteCellIndex = self.cellIndex}, deleteAction: {self.checkConfirmDeletePopover()})
+                                NoteCellPopover(openAction: {self.checkOpenClose()}, duplicateAction: {self.MSSNCGlobal.duplicateNoteCellIndex = self.cellIndex}, renameAction: {self.openNoteRename()}, deleteAction: {self.checkConfirmDeletePopover()})
                                     .environmentObject(self.noteWindowProperties)
                             }.buttonStyle(DefaultButtonStyle())
                     }
@@ -106,7 +106,7 @@ struct NoteCellView: View {
                 }
                 .frame(height: 10)
                 .padding(.trailing, 2)
-                .padding(.leading, 6)
+                .padding(.leading, 15)
 
                 /// note cell content
                 VStack(alignment: .leading, spacing: 2) {
@@ -330,6 +330,11 @@ struct NoteCellView: View {
             }
             self.MSSNCGlobal.deleteNoteCell = self.cellIndex
         }
+    }
+
+    /// triggers note to be renamed either with popover in note window, or text box in note cell
+    func openNoteRename() {
+        
     }
 
 
