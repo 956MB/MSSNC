@@ -10,6 +10,8 @@ import SwiftUI
 struct MSSNCAboutScreen: View {
     private var version: String
 
+    @Environment(\.openURL) var openURL
+
     init() {
         version = Bundle.main.releaseVersionNumber!
     }
@@ -26,15 +28,29 @@ struct MSSNCAboutScreen: View {
                     VStack {
                         Spacer()
                         VStack(alignment: .leading, spacing: 25) {
-                            VStack(alignment: .leading, spacing: -2) {
-                                Text("MSSNC")
-                                    .font(.title)
-                                    .fontWeight(.medium)
-                                    .help("\"Microsoft Sticky Notes Clone\"")
-                                Text("Version \(self.version) (12E507)")
-                                    .font(.subheadline)
-                                    .foregroundColor(Color.gray)
+
+                            HStack {
+                                VStack(alignment: .leading, spacing: -2) {
+                                    /// app
+                                    Text("MSSNC")
+                                        .font(.title)
+                                        .fontWeight(.medium)
+                                        .help("\"Microsoft Sticky Notes Clone\"")
+                                    /// version
+                                    Text("Version \(self.version) (12E507)")
+                                        .font(.subheadline)
+                                        .foregroundColor(Color.gray)
+                                }
+
+                                Spacer()
+
+                                /// github repo button
+                                Button("Github", action: {
+                                    openURL(URL(string: "https://github.com/956MB/MSSNC")!)
+                                })
+                                .buttonStyle(DefaultButtonStyle())
                             }
+                            /// copyright info
                             VStack(alignment: .leading) {
                                 Text("Copyright © 1999-2021 Apple Inc. All rights reserved. Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries")
                                     .font(Font.system(size: 9, weight: .light))
