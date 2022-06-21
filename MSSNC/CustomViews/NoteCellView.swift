@@ -311,7 +311,6 @@ struct NoteCellView: View {
         }
         self.isPopover                       = false
         self.cellCornerHovered               = false
-        self.cellHovered                     = false
         self.MSSNCGlobal.saveCoreDataContext = true
     }
 
