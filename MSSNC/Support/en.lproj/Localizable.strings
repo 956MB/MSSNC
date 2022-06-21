@@ -13,6 +13,7 @@
 "local_deletenote"               = "Delete Note";
 "local_deletenoteshort"          = "Delete";
 "local_duplicatenote"            = "Duplicate Note";
+"local_renamenote"               = "Rename Note";
 "local_showallnotes"             = "Show All Notes";
 "local_hideallnotes"             = "Hide All Notes";
 "local_delete"                   = "Delete";

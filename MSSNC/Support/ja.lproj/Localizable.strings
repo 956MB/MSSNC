@@ -13,6 +13,7 @@
 "local_deletenote"               = "注意を削除します";
 "local_deletenoteshort"          = "消去";
 "local_duplicatenote"            = "重複した注意事項";
+"local_renamenote"               = "メモの名前を変更";
 "local_showallnotes"             = "すべてのメモを表示";
 "local_hideallnotes"             = "すべてのメモを非表示";
 "local_delete"                   = "消去";

@@ -13,6 +13,7 @@
 "local_deletenote"               = "Radera";
 "local_deletenoteshort"          = "Radera";
 "local_duplicatenote"            = "Duplicera";
+"local_renamenote"               = "Byt namn på not";
 "local_showallnotes"             = "Visa alla anteckningar";
 "local_hideallnotes"             = "Dölj alla anteckningar";
 "local_delete"                   = "Radera";

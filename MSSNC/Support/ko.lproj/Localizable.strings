@@ -13,6 +13,7 @@
 "local_deletenote"               = "메모 삭제";
 "local_deletenoteshort"          = "삭제";
 "local_duplicatenote"            = "중복 메모";
+"local_renamenote"               = "메모 이름 바꾸기";
 "local_showallnotes"             = "모든 메모 표시";
 "local_hideallnotes"             = "모든 메모 숨기기";
 "local_delete"                   = "삭제";

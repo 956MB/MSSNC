@@ -13,6 +13,7 @@
 "local_deletenote"               = "Poista muistiinpano";
 "local_deletenoteshort"          = "Poistaa";
 "local_duplicatenote"            = "Duplicate Huom";
+"local_renamenote"               = "Nimeä uudelleen Houm";
 "local_showallnotes"             = "Näytä kaikki muistiinpanot";
 "local_hideallnotes"             = "Piilota kaikki muistiinpanot";
 "local_delete"                   = "Poistaa";
