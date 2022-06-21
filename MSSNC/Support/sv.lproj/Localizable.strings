@@ -1,0 +1,66 @@
+/*
+  Localizable.strings (SV)
+  MSSNC
+
+  Created by Trevor Bays on 7/22/21.
+
+*/
+
+"local_aboutmssnc"               = "Handla om MSSNC";
+"local_stickynotestitle"         = "Klisterlappar";
+"local_settingstitle"            = "Inställningar";
+"local_newnote"                  = "Ny anmärkning";
+"local_deletenote"               = "Radera";
+"local_deletenoteshort"          = "Radera";
+"local_duplicatenote"            = "Duplicera";
+"local_showallnotes"             = "Visa alla anteckningar";
+"local_hideallnotes"             = "Dölj alla anteckningar";
+"local_delete"                   = "Radera";
+"local_cancel"                   = "Avbryt";
+"local_opennote"                 = "Öppen anmärkning";
+"local_closenote"                = "Anmärkning";
+"local_noteslist"                = "Anteckningslista";
+"local_noteslistshort"           = "Anteckningar";
+"local_untitlednote"             = "Ofrälse";
+"local_notetitle"                = "Titel";
+"local_menu"                     = "Meny";
+"local_open"                     = "ÖPPEN";
+"local_back"                     = "Tillbaka";
+"local_settingsgeneral"          = "Allmän";
+"local_settingsnotes"            = "Anteckningar";
+"local_confirmdelete"            = "Bekräfta innan du tar bort";
+"local_confirmdeletetitle"       = "Är du säker på att du vill ta bort den här anteckningen?";
+"local_confirmdeletetitlepre"    = "Är du säker att du vill radera \"";
+"local_confirmdeletetitlepost"   = "\" ?";
+"local_autosave"                 = "Auto spara förändringar";
+"local_openonlaunch"             = "Öppna anteckningar på lanseringen";
+"local_usetitles"                = "Visa titlar";
+"local_previewlines"             = "Notera förhandsgranskningslinjen";
+"local_settingscolor"            = "Färger";
+"local_settingsappearance"       = "Utseende";
+"local_settingslinelimit"        = "Cellinjegräns";
+"local_settingstextmode"         = "Textläge";
+"local_settingstextmodeplain"    = "Enkel";
+"local_settingstextmodemarkdown" = "Prissänkning";
+"local_settingsthemelight"       = "Ljus";
+"local_settingsthemedark"        = "Mörk";
+"local_settingsthemesystem"      = "Systemet";
+"local_showaccentcolors"         = "Visa accentfärger";
+"local_settingsabout"            = "Handla om";
+"local_bold"                     = "Djärv";
+"local_italic"                   = "Kursiv";
+"local_underline"                = "Understrykning";
+"local_strikethrough"            = "Trrikethrough";
+"local_bullet"                   = "Kulspoäng";
+"local_settingsdefaultaccent"    = "Accent";
+"local_accentred"                = "Röd";
+"local_accentorange"             = "orange";
+"local_accentyellow"             = "Gul";
+"local_accentgreen"              = "Grön";
+"local_accentblue"               = "Blå";
+"local_accentpurple"             = "Lila";
+"local_accentpink"               = "Rosa";
+"local_fontsize"                 = "Textstorlek";
+"local_fontsizeincrease"         = "Öka";
+"local_fontsizedecrease"         = "Minska";
+"local_fontsizereset"            = "Återställa";

@@ -1,0 +1,66 @@
+/*
+  Localizable.strings (EN)
+  MSSNC
+
+  Created by Trevor Bays on 7/22/21.
+
+*/
+
+"local_aboutmssnc"               = "About MSSNC";
+"local_stickynotestitle"         = "Sticky Notes";
+"local_settingstitle"            = "Preferences";
+"local_newnote"                  = "New Note";
+"local_deletenote"               = "Delete Note";
+"local_deletenoteshort"          = "Delete";
+"local_duplicatenote"            = "Duplicate Note";
+"local_showallnotes"             = "Show All Notes";
+"local_hideallnotes"             = "Hide All Notes";
+"local_delete"                   = "Delete";
+"local_cancel"                   = "Cancel";
+"local_opennote"                 = "Open Note";
+"local_closenote"                = "Close Note";
+"local_noteslist"                = "Notes List";
+"local_noteslistshort"           = "Notes";
+"local_untitlednote"             = "Untitled";
+"local_notetitle"                = "Title";
+"local_menu"                     = "Menu";
+"local_open"                     = "OPEN";
+"local_back"                     = "Back";
+"local_settingsgeneral"          = "General";
+"local_settingsnotes"            = "Notes";
+"local_confirmdelete"            = "Confirm before deleting";
+"local_confirmdeletetitle"       = "Are you sure you want to delete this note?";
+"local_confirmdeletetitlepre"    = "Are you sure you want to delete \"";
+"local_confirmdeletetitlepost"   = "\" ?";
+"local_autosave"                 = "Auto save changes";
+"local_openonlaunch"             = "Open notes list on launch";
+"local_usetitles"                = "Show titles";
+"local_previewlines"             = "Note preview line count";
+"local_settingscolor"            = "Colors";
+"local_settingsappearance"       = "Appearance";
+"local_settingslinelimit"        = "Cell line limit";
+"local_settingstextmode"         = "Text mode";
+"local_settingstextmodeplain"    = "Plain";
+"local_settingstextmodemarkdown" = "Markdown";
+"local_settingsthemelight"       = "Light";
+"local_settingsthemedark"        = "Dark";
+"local_settingsthemesystem"      = "System";
+"local_showaccentcolors"         = "Show accent colors";
+"local_settingsabout"            = "About";
+"local_bold"                     = "Bold";
+"local_italic"                   = "Italic";
+"local_underline"                = "Underline";
+"local_strikethrough"            = "Strikethrough";
+"local_bullet"                   = "Bullet Points";
+"local_settingsdefaultaccent"    = "Default accent";
+"local_accentred"                = "Red";
+"local_accentorange"             = "Orange";
+"local_accentyellow"             = "Yellow";
+"local_accentgreen"              = "Green";
+"local_accentblue"               = "Blue";
+"local_accentpurple"             = "Purple";
+"local_accentpink"               = "Pink";
+"local_fontsize"                 = "Font Size";
+"local_fontsizeincrease"         = "Increase";
+"local_fontsizedecrease"         = "Decrease";
+"local_fontsizereset"            = "Reset";

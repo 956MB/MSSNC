@@ -1,0 +1,67 @@
+/*
+  Localizable.strings (JA)
+  MSSNC
+
+  Created by Trevor Bays on 7/22/21.
+
+*/
+
+"local_aboutmssnc"               = "MSSNCについて";
+"local_stickynotestitle"         = "ポストイット";
+"local_settingstitle"            = "設定";
+"local_newnote"                  = "新ノート";
+"local_deletenote"               = "注意を削除します";
+"local_deletenoteshort"          = "消去";
+"local_duplicatenote"            = "重複した注意事項";
+"local_showallnotes"             = "すべてのメモを表示";
+"local_hideallnotes"             = "すべてのメモを非表示";
+"local_delete"                   = "消去";
+"local_cancel"                   = "キャンセル";
+"local_opennote"                 = "オープンノート";
+"local_closenote"                = "注意してください";
+"local_noteslist"                = "ノートリスト";
+"local_noteslistshort"           = "ノート";
+"local_untitlednote"             = "無題";
+"local_notetitle"                = "タイトル";
+"local_menu"                     = "メニュー";
+"local_open"                     = "開いた";
+"local_back"                     = "戻る";
+"local_settingsgeneral"          = "全般的";
+"local_settingsnotes"            = "ノート";
+"local_confirmdelete"            = "削除する前に確認してください";
+"local_confirmdeletetitle"       = "このメモを削除してもよろしいですか？";
+"local_confirmdeletetitlepre"    = "消去してもよろしいですか \"";
+"local_confirmdeletetitlepost"   = "\" ?";
+"local_autosave"                 = "自動保存変更";
+"local_openonlaunch"             = "起動時にノートリストを開く";
+"local_usetitles"                = "ノートタイトルを表示します";
+"local_previewlines"             = "注：プレビューラインカウント";
+"local_settingscolor"            = "色";
+"local_settingsappearance"       = "外観";
+"local_settingslinelimit"        = "細胞株の制限";
+"local_settingstextmode"         = "テキストモード";
+"local_settingstextmodeplain"    = "プレーン";
+"local_settingstextmodemarkdown" = "マークダウン";
+"local_settingsthemelight"       = "光";
+"local_settingsthemedark"        = "暗い";
+"local_settingsthemesystem"      = "システム";
+"local_showaccentcolors"         = "アクセントカラーを表示します";
+"local_settingsabout"            = "約";
+"local_bold"                     = "大胆な";
+"local_italic"                   = "イタリック";
+"local_underline"                = "下線を引く";
+"local_strikethrough"            = "挑む";
+"local_bullet"                   = "弾丸のポイント";
+"local_settingsdefaultaccent"    = "デフォルトのアクセント";
+"local_accentred"                = "赤";
+"local_accentorange"             = "オレンジ";
+"local_accentyellow"             = "黄";
+"local_accentgreen"              = "緑";
+"local_accentblue"               = "青";
+"local_accentpurple"             = "紫の";
+"local_accentpink"               = "ピンク";
+"local_fontsize"                 = "フォントサイズ";
+"local_fontsizeincrease"         = "増加";
+"local_fontsizedecrease"         = "下降";
+"local_fontsizereset"            = "リセットする";
+

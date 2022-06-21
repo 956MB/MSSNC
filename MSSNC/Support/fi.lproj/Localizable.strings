@@ -1,0 +1,66 @@
+/*
+  Localizable.strings (FI)
+  MSSNC
+
+  Created by Trevor Bays on 7/22/21.
+
+*/
+
+"local_aboutmssnc"               = "Tietoja MSSNC: stä";
+"local_stickynotestitle"         = "Tarramuistilaput";
+"local_settingstitle"            = "Asetukset";
+"local_newnote"                  = "Uusi huomautus";
+"local_deletenote"               = "Poista muistiinpano";
+"local_deletenoteshort"          = "Poistaa";
+"local_duplicatenote"            = "Duplicate Huom";
+"local_showallnotes"             = "Näytä kaikki muistiinpanot";
+"local_hideallnotes"             = "Piilota kaikki muistiinpanot";
+"local_delete"                   = "Poistaa";
+"local_cancel"                   = "Peruuttaa";
+"local_opennote"                 = "Avaa muistiinpano";
+"local_closenote"                = "Sulje huomautus";
+"local_noteslist"                = "Huomautuksia";
+"local_noteslistshort"           = "Huomautuksia";
+"local_untitlednote"             = "Untitled";
+"local_notetitle"                = "Nimi";
+"local_menu"                     = "Valikko";
+"local_open"                     = "AVATA";
+"local_back"                     = "Takaisin";
+"local_settingsgeneral"          = "Yleinen";
+"local_settingsnotes"            = "Huomautuksia";
+"local_confirmdelete"            = "Vahvista ennen poistamista";
+"local_confirmdeletetitle"       = "Haluatko varmasti poistaa tämän huomautuksen?";
+"local_confirmdeletetitlepre"    = "Haluatko varmasti poistaa \"";
+"local_confirmdeletetitlepost"   = "\" ?";
+"local_autosave"                 = "Auto Tallenna muutokset";
+"local_openonlaunch"             = "Avaa Notes-luettelo käynnistyksestä";
+"local_usetitles"                = "Näytä muistiin liittyvät nimikkeet";
+"local_previewlines"             = "Huomautus Esikatselu Line Count";
+"local_settingscolor"            = "Värit";
+"local_settingsappearance"       = "Ulkomuoto";
+"local_settingslinelimit"        = "Solulinjan raja";
+"local_settingstextmode"         = "Tekstitila";
+"local_settingstextmodeplain"    = "Tavallinen";
+"local_settingstextmodemarkdown" = "Markdown";
+"local_settingsthemelight"       = "Kevyt";
+"local_settingsthemedark"        = "Tumma";
+"local_settingsthemesystem"      = "Järjestelmä";
+"local_showaccentcolors"         = "Näytä aksenttimet";
+"local_settingsabout"            = "Noin";
+"local_bold"                     = "Lihavoitu";
+"local_italic"                   = "Kursiivi";
+"local_underline"                = "Korostaa";
+"local_strikethrough"            = "Strikethrough";
+"local_bullet"                   = "Bullet-pisteitä";
+"local_settingsdefaultaccent"    = "Oletuskorvaus";
+"local_accentred"                = "Punainen";
+"local_accentorange"             = "Oranssi";
+"local_accentyellow"             = "Keltainen";
+"local_accentgreen"              = "Vihreä";
+"local_accentblue"               = "Sininen";
+"local_accentpurple"             = "Violetti";
+"local_accentpink"               = "Vaaleanpunainen";
+"local_fontsize"                 = "Fonttikoko";
+"local_fontsizeincrease"         = "Lisääntyä";
+"local_fontsizedecrease"         = "Väheneminen";
+"local_fontsizereset"            = "Nollata";

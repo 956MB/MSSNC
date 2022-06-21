@@ -1,0 +1,67 @@
+/* 
+  Localizable.strings (KO)
+  MSSNC
+
+  Created by Trevor Bays on 7/22/21.
+  
+*/
+
+"local_aboutmssnc"               = "MSSNC 소개";
+"local_stickynotestitle"         = "스티커 메모";
+"local_settingstitle"            = "기본 설정";
+"local_newnote"                  = "새 메모";
+"local_deletenote"               = "메모 삭제";
+"local_deletenoteshort"          = "삭제";
+"local_duplicatenote"            = "중복 메모";
+"local_showallnotes"             = "모든 메모 표시";
+"local_hideallnotes"             = "모든 메모 숨기기";
+"local_delete"                   = "삭제";
+"local_cancel"                   = "취소";
+"local_opennote"                 = "메모 열기";
+"local_closenote"                = "메모 닫기";
+"local_noteslist"                = "메모 목록";
+"local_noteslistshort"           = "노트";
+"local_untitlednote"             = "제목 없는 메모";
+"local_notetitle"                = "제목";
+"local_menu"                     = "메뉴";
+"local_open"                     = "열려있는";
+"local_back"                     = "뒤";
+"local_settingsgeneral"          = "일반";
+"local_settingsnotes"            = "노트";
+"local_confirmdelete"            = "삭제하기 전에 확인";
+"local_confirmdeletetitle"       = "이 메모를 삭제하시겠습니까?";
+"local_confirmdeletetitlepre"    = "삭제 하시겠습니까 \"";
+"local_confirmdeletetitlepost"   = "\" ?";
+"local_autosave"                 = "자동 저장 변경 사항";
+"local_openonlaunch"             = "시작 시 메모 목록 열기";
+"local_usetitles"                = "메모 제목 표시";
+"local_previewlines"             = "메모 미리보기 줄 수";
+"local_settingscolor"            = "그림 물감";
+"local_settingsappearance"       = "모습";
+"local_settingslinelimit"        = "세포주 한계";
+"local_settingstextmode"         = "텍스트 모드";
+"local_settingstextmodeplain"    = "솔직한";
+"local_settingstextmodemarkdown" = "가격 인하";
+"local_settingsthemelight"       = "빛";
+"local_settingsthemedark"        = "어두운";
+"local_settingsthemesystem"      = "체계";
+"local_showaccentcolors"         = "강조 색상 표시";
+"local_settingsabout"            = "약";
+"local_bold"                     = "용감한";
+"local_italic"                   = "이탤릭체";
+"local_underline"                = "밑줄";
+"local_strikethrough"            = "취소선";
+"local_bullet"                   = "중요 항목";
+"local_image"                    = "이미지 추가";
+"local_settingsdefaultaccent"    = "기본 악센트";
+"local_accentred"                = "빨간색";
+"local_accentorange"             = "주황색";
+"local_accentyellow"             = "노란색";
+"local_accentgreen"              = "초록";
+"local_accentblue"               = "파란색";
+"local_accentpurple"             = "보라";
+"local_accentpink"               = "분홍";
+"local_fontsize"                 = "글꼴 크기";
+"local_fontsizeincrease"         = "증가하다";
+"local_fontsizedecrease"         = "감소하다";
+"local_fontsizereset"            = "초기화";
