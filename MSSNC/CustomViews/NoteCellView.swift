@@ -57,7 +57,7 @@ struct NoteCellView: View {
                 HStack {
                     Spacer()
                 }
-                .frame(height: 4)
+                .frame(height: 4) // Not using changing accent height: (self.cellHovered ? 7 : 4)
                 .background(RoundedCorners(tl: 4, tr: 4, bl: 0, br: 0).fill(self.showAccent ? self.useAccent.opacity(0.90) : Color("AccentDontShowCell")))
 
                 HStack {
@@ -73,7 +73,6 @@ struct NoteCellView: View {
                         Text(self.getCornerText())
                             .font((self.cellHovered || self.isPopover) ? .system(size: 14) : .system(size: 9))
                             .foregroundColor(getCornerAccentColor().opacity(0.90))
-//                            .padding([.leading], 2)
                             .padding([.trailing], 2)
                             // MARK: - padding on triple dot buttons too small, hard to click
                             .onHover {_ in
@@ -142,6 +141,14 @@ struct NoteCellView: View {
             if (!noteOpen) {
                 self.fetchedNote.open                = false
                 self.MSSNCGlobal.saveCoreDataContext = true
+            }
+        })
+        /// EDIT/SAVE: note edited
+        .onReceive(self.MSSNCGlobal.$noteEdit, perform: { noteEdit in
+            if ((noteEdit != -1) && (noteEdit != self.MSSNCGlobal.lastEditedNote)) {
+                self.MSSNCGlobal.lastEditedNote = noteEdit
+                self.noteCells.updateCellLastEdit(noteEdit)
+                self.MSSNCGlobal.noteEdit = -1
             }
         })
         /// FOCUS: note gains / loses focus
@@ -284,8 +291,10 @@ struct NoteCellView: View {
         } else {
             self.noteWindowProperties.noteOpen = true
             self.fetchedNote.open              = true
+            self.note.open                     = true
             self.pairedNoteWindow              = nil
             self.pairedNoteWindow              = newNoteWindow(noteWindowProps: self.noteWindowProperties, note: self.$note, title: self.$title, useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, noteContent: self.$cellContent, cellIndex: self.$cellIndex)
+            self.MSSNCGlobal.noteEdit = self.cellIndex
         }
         self.isPopover                       = false
         self.cellCornerHovered               = false

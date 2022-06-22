@@ -21,6 +21,8 @@ public class MSSNCGlobalProperties: ObservableObject {
     @Published var deleteNoteTitle:              String  = ""
 //    @Published var showAccent:                   Bool    = true
     @Published var focusedNote:                  Int     = -1
+    @Published var lastEditedNote:               Int     = -1
+    @Published var noteEdit:                     Int     = -1
     @Published var createNewNoteCommand:         Bool    = false
     @Published var createNewWindow:              Bool    = false
     @Published var deleteNoteCommand:            Bool    = false
@@ -36,13 +38,15 @@ public class MSSNCGlobalProperties: ObservableObject {
 public class MainWindowProperties: ObservableObject {
     static let shared = MainWindowProperties()
 
-    @Published var frame:        CGRect = .zero
-    @Published var focus:        Bool   = true
-    @Published var settingsOpen: Bool   = false
-    @Published var showAllNotes: Bool   = false
-    @Published var hideAllNotes: Bool   = false
-    @Published var mainWindow:   NSWindow?
-    @Published var mainDockMenu: NSMenu?
+    @Published var frame:                 CGRect = .zero
+    @Published var focus:                 Bool   = true
+    @Published var settingsOpen:          Bool   = false
+    @Published var showAllNotes:          Bool   = false
+    @Published var hideAllNotes:          Bool   = false
+    @Published var mainWindow:            NSWindow?
+    @Published var mainDockMenu:          NSMenu?
+    @Published var willTerminate:         Bool   = false
+    @Published var createNewNoteExternal: Bool   = false
 }
 public class NoteWindowProperties: ObservableObject {
     @Published var frame:    CGRect = .zero
@@ -64,6 +68,7 @@ public class NoteCopyObject: ObservableObject {
 struct NoteCell: Identifiable {
     var id:             UUID = UUID()
     var noteOpen:       Bool
+    var lastEdit:       Date
     var useAccent:      Color
     var selectedAccent: Color
     var content:        String
@@ -75,33 +80,36 @@ class NoteCells: ObservableObject {
 
 //    @Published var cells:     [NoteCell]
     @Published var cells: [Int : NoteCell]
-    @Published var cellIndex: Int = 0
+    @Published var cellCount: Int = 0
 
     init(cells: [Int : NoteCell]){
         self.cells = cells
-        self.cellIndex = cells.count
+        self.cellCount = cells.count
     }
 
     func setCells(_ cells: [Int : NoteCell]) {
         self.cells = cells
-        self.cellIndex = cells.count
+        self.cellCount = cells.count
     }
     func addCell(_ key: Int, _ cell: NoteCell) {
         self.cells[key] = cell
-        self.cellIndex += 1
+        self.cellCount += 1
     }
     func deleteCell(_ index: Int) {
         self.cells[index] = nil
     }
     func duplicateCell(_ index: Int) {
-        self.cellIndex += 1
-        self.cells[self.cellIndex] = self.cells[index]
+        self.cellCount += 1
+        self.cells[self.cellCount] = self.cells[index]
+    }
+    func updateCellLastEdit(_ index: Int) {
+        self.cells[index]?.lastEdit = Date()
     }
 
     func getCellsSorted() -> [NoteCell] {
         // MARK: - potential point of performance deg, sorting dict and appending to new array every list update could be bad
         // could myabe just give back already sorted array if no new note added, instead of sorting again every time and returning that
-        let sortedCells = self.cells.sorted{ $0.key > $1.key }
+        let sortedCells = self.cells.sorted(by: { $0.value.lastEdit > $1.value.lastEdit })
         var cells: [NoteCell] = []
         for (_, value) in sortedCells {
             cells.append(value)

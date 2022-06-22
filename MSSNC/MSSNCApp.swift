@@ -13,11 +13,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     /// - Parameter notification: Notification
     func applicationDidFinishLaunching(_ notification: Notification) {
 
-        // MARK:                                     vvv using "last" here may have fixed window not being brought to front and given focus bug? i guess using "last" instead of semmingly obvious "first" is correct?
+        // MARK: vvv using "last" here may have fixed window not being brought to front and given focus bug? i guess using "last" instead of semmingly obvious "first" is correct?
         if let window = NSApplication.shared.windows.last {
             window.titleVisibility            = .hidden
             window.titlebarAppearsTransparent = true
             window.isReleasedWhenClosed       = false
+            window.setFrameAutosaveName("StickyNotes.List")
 
             MainWindowProperties.shared.mainWindow = window
 
@@ -32,11 +33,11 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     /// - Parameter sender: NSApplication
     /// - Returns: NSMenu?
     func applicationDockMenu(_ sender: NSApplication) -> NSMenu? {
-        let newNoteItem      = NSMenuItem(title:"New Note", action:#selector(AppDelegate.newNote), keyEquivalent:"")
-        let notesListItem    = NSMenuItem(title:"Notes List", action:#selector(AppDelegate.openNotesList), keyEquivalent:"")
-        let settingsItem     = NSMenuItem(title:"Settings", action:#selector(AppDelegate.openSettings), keyEquivalent:"")
-        let showAllNotesItem = NSMenuItem(title:"Show All Notes", action:#selector(AppDelegate.showAllNotes), keyEquivalent:"")
-        let hideAllNotesItem = NSMenuItem(title:"Hide All Notes", action:#selector(AppDelegate.hideAllNotes), keyEquivalent:"")
+        let newNoteItem      = NSMenuItem(title: "New Note", action: #selector(AppDelegate.newNoteDock), keyEquivalent: "")
+        let notesListItem    = NSMenuItem(title: "Notes List", action: #selector(AppDelegate.openNotesListDock), keyEquivalent: "")
+        let settingsItem     = NSMenuItem(title: "Settings", action: #selector(AppDelegate.openSettingsDock), keyEquivalent: "")
+        let showAllNotesItem = NSMenuItem(title: "Show All Notes", action: #selector(AppDelegate.showAllNotesDock), keyEquivalent: "")
+        let hideAllNotesItem = NSMenuItem(title: "Hide All Notes", action: #selector(AppDelegate.hideAllNotesDock), keyEquivalent: "")
         let menu             = NSMenu()
 
         menu.addItem(newNoteItem)
@@ -50,33 +51,35 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         return menu
     }
 
+    // MARK: - Dock icon functions
+    ///
     /// NEW NOTE: creates new empty note
-    @objc func newNote(sender : NSMenuItem) {
-//        createNewNote()
-//        let newStickyNote = PersistenceController.shared.addStickyNote(context: PersistenceController.shared.container.viewContext)
-//        createNote(createdStickyNote: newStickyNote)
+    @objc func newNoteDock(sender : NSMenuItem) {
+        if (MainWindowProperties.shared.mainWindow != nil) {
+            MainWindowProperties.shared.createNewNoteExternal = true
+        }
     }
     /// NOTES LIST: shows main window and brings notes list to front
-    @objc func openNotesList(sender : NSMenuItem) {
+    @objc func openNotesListDock(sender : NSMenuItem) {
         // MARK: TODO: vvv this opening main window after its closed works, but clicking the app icon in dock again creates the window without the correct starting w/h
         if (MainWindowProperties.shared.mainWindow != nil) {
             MainWindowProperties.shared.mainWindow?.makeKeyAndOrderFront(nil)
         }
     }
     /// SETTINGS: shows main window and opens settings view
-    @objc func openSettings(sender : NSMenuItem) {
+    @objc func openSettingsDock(sender : NSMenuItem) {
         if (MainWindowProperties.shared.mainWindow != nil) {
             MainWindowProperties.shared.mainWindow?.makeKeyAndOrderFront(nil)
         }
         MainWindowProperties.shared.settingsOpen = true
     }
     /// SHOW: shows all note windows and brings to front
-    @objc func showAllNotes(sender : NSMenuItem) {
+    @objc func showAllNotesDock(sender : NSMenuItem) {
         MainWindowProperties.shared.showAllNotes = true
         MainWindowProperties.shared.showAllNotes = false
     }
     /// HIDE: hides all note windows and minimizes
-    @objc func hideAllNotes(sender : NSMenuItem) {
+    @objc func hideAllNotesDock(sender : NSMenuItem) {
         MainWindowProperties.shared.hideAllNotes = true
         MainWindowProperties.shared.showAllNotes = false
     }

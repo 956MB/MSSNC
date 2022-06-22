@@ -10,8 +10,6 @@ import SwiftUI
 
 struct MSSNCNoteScreen: View {
 
-//    @State var noteWindow: NSWindow
-
     @EnvironmentObject var noteWindowProperties: NoteWindowProperties
     @StateObject var MSSNCGlobal               = MSSNCGlobalProperties.shared
     let def                                    = DefaultsManager.shared
@@ -61,14 +59,14 @@ struct MSSNCNoteScreen: View {
                             ?
                         nil
                             :
-                            //                    NoteTextEditorView(noteContent: self.$noteContent, subMenuShown: self.$subMenuShown)
+//                        NoteTextEditorView(noteContent: self.$noteContent, subMenuShown: self.$subMenuShown)
                         TextEditor(text: self.$noteContent)
                             .font(.system(size: self.fontSize))
                             .opacity(self.subMenuShown ? 0.4 : 1.0)
                             .padding([.leading, .trailing], 5).padding(.bottom, (noteWindowProperties.frame.size.width >= 272 && self.noteFocused) ? 62 : 11)
                             .onChange(of: self.noteContent, perform: { _ in
                                 if (self.note.open) {
-//                                    self.note.lastOpened = Date()
+                                    self.MSSNCGlobal.noteEdit = self.cellIndex
                                 }
                             })
                     )
@@ -88,11 +86,6 @@ struct MSSNCNoteScreen: View {
                                 .environmentObject(self.noteWindowProperties)
                         }
                         .cornerRadius(7)
-//                        .background(VisualEffectBackground(material: NSVisualEffectView.Material.menu, blendingMode: NSVisualEffectView.BlendingMode.withinWindow))
-//                        .overlay(
-//                            RoundedRectangle(cornerRadius: 6)
-//                                .stroke(Color("SettingsContainerBorder"), lineWidth: 1)
-//                        )
                         .background(RoundedCorners(tl: 7, tr: 7, bl: 7, br: 7).fill(Color(hex: 0x1B1B1B)))
 
                         HStack {
@@ -107,7 +100,6 @@ struct MSSNCNoteScreen: View {
                     Spacer()
                 }
             }
-//            .padding(.bottom, -8)
             .padding(.bottom, 48)
             .frame(maxHeight: .infinity)
 
@@ -138,8 +130,8 @@ struct MSSNCNoteScreen: View {
             .frame(maxHeight: .infinity)
         }
         .frame(minWidth: 260, maxWidth: .infinity, minHeight: 260, maxHeight: .infinity)
-//        .background(VisualEffectBackground(material: NSVisualEffectView.Material.menu, blendingMode: NSVisualEffectView.BlendingMode.behindWindow))
         .padding(.top, -37)
+//        .background(VisualEffectBackground(material: NSVisualEffectView.Material.menu, blendingMode: NSVisualEffectView.BlendingMode.behindWindow))
 
         
         /// RECEIVERS
@@ -197,7 +189,6 @@ struct MSSNCNoteScreen: View {
             self.MSSNCGlobal.confirmDeleteNoteWindowShown = true
         } else {
             self.MSSNCGlobal.deleteNoteWindow = self.cellIndex
-//            self.noteWindow.close()
         }
     }
 

@@ -49,13 +49,9 @@ struct MSSNCSettingsScreen: View {
 
                         VStack(alignment: .leading, spacing: 10) {
                             SettingsCheckbox(isOn: self.$confirmBeforeDelete, toggleKey: "local_confirmdelete")
-                                .onChange(of: self.confirmBeforeDelete) { _ in
-                                    def.setKeyValue(key: "key_confirmBeforeDelete", value: self.confirmBeforeDelete)
-                                }
+                                .onChange(of: self.confirmBeforeDelete) { _ in def.setKeyValue(key: "key_confirmBeforeDelete", value: self.confirmBeforeDelete) }
                             SettingsCheckbox(isOn: self.$openNotesListOnLaunch, toggleKey: "local_openonlaunch")
-                                .onChange(of: self.openNotesListOnLaunch) { _ in
-                                    def.setKeyValue(key: "key_openNotesListOnLaunch", value: self.openNotesListOnLaunch)
-                                }
+                                .onChange(of: self.openNotesListOnLaunch) { _ in def.setKeyValue(key: "key_openNotesListOnLaunch", value: self.openNotesListOnLaunch) }
                         }
                         .padding(.leading, 30)
 
@@ -70,13 +66,9 @@ struct MSSNCSettingsScreen: View {
 
                         VStack(alignment: .leading, spacing: 10) {
                             SettingsCheckbox(isOn: self.$useNoteTitles, toggleKey: "local_usetitles")
-                                .onChange(of: self.useNoteTitles) { _ in
-                                    def.setKeyValue(key: "key_useNoteTitles", value: self.useNoteTitles)
-                                }
+                                .onChange(of: self.useNoteTitles) { _ in def.setKeyValue(key: "key_useNoteTitles", value: self.useNoteTitles) }
                             SettingsCheckbox(isOn: self.$autoSaveChanges, toggleKey: "local_autosave")
-                                .onChange(of: self.autoSaveChanges) { _ in
-                                    def.setKeyValue(key: "key_autoSaveChanges", value: self.autoSaveChanges)
-                                }
+                                .onChange(of: self.autoSaveChanges) { _ in def.setKeyValue(key: "key_autoSaveChanges", value: self.autoSaveChanges) }
                         }
                         .padding(.leading, 30)
                         .padding(.bottom, 10)
@@ -137,9 +129,7 @@ struct MSSNCSettingsScreen: View {
                                 Text("local_accentpurple".localized()).tag(MSSNCAccent.purple.rawValue)
                                 Text("local_accentpink".localized()).tag(MSSNCAccent.pink.rawValue)
                             }
-                            .onChange(of: self.defaultAccent, perform: { _ in
-                                def.setKeyValue(key: "key_defaultAccent", value: self.defaultAccent)
-                            })
+                            .onChange(of: self.defaultAccent ) { _ in def.setKeyValue(key: "key_defaultAccent", value: self.defaultAccent) }
                             .frame(width: 120, alignment: .leading)
                         }
                         .disabled(!self.useNoteAccents)

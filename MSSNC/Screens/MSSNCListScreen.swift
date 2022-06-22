@@ -38,8 +38,6 @@ struct MSSNCListScreen: View {
                 self.noteCellsTrack.cellsSet = true
             }
         }
-//        color: self.windowFocused ? Color.background.opacity(0.17) : Color.background.opacity(0.13)
-//    color: self.windowFocused ? Color("ToolbarBGUnfocused") : Color("ToolbarBGFocused")
         MSSNCWindowRegular(color: Color("ToolbarBGFocused"), content: {
             VStack {
                 ZStack {
@@ -55,10 +53,6 @@ struct MSSNCListScreen: View {
                                     .padding([.leading, .trailing], 10)
                                     .padding([.bottom], 2)
                             }
-//                            ForEach(self.stickyNotes) { note in
-//                                NoteCellView(fetchedNote: note)
-//                                    .environmentObject(NoteWindowProperties())
-//                            }
                     }
                     .padding(.top, 48)
                     .disabled(self.mainWindowProperties.settingsOpen)
@@ -70,7 +64,6 @@ struct MSSNCListScreen: View {
                     }
                 }
             }
-//            .padding([.top], 2)
         }).toolbarContent(toolbar: {
             ZStack {
                 /// sticky notes / settings title
@@ -105,8 +98,6 @@ struct MSSNCListScreen: View {
                         if (self.mainWindowProperties.settingsOpen) {
                             self.mainWindowProperties.settingsOpen.toggle()
                         } else {
-//                            let newStickyNote = PersistenceController.shared.addStickyNote(context: self.viewContext, save: true)
-//                            createNote(createdStickyNote: newStickyNote)
                             self.MSSNCGlobal.createNewNoteCommand = true
                         }
                     }) {
@@ -120,14 +111,10 @@ struct MSSNCListScreen: View {
                 .padding([.trailing], 6)
             }
             // MARK: temporarily removing these modifiers to counteract the opposite effects of the window focus bug, fix later
-//            .disabled((!self.windowFocused || self.MSSNCGlobal.confirmDeleteMainShown))
-//            .opacity((self.windowFocused && !self.MSSNCGlobal.confirmDeleteMainShown) ? 0.35 : 1.0)
-            // fuck this bug ass ^
-//            .disabled((self.MSSNCGlobal.confirmDeleteMainShown))
-//            .opacity((!self.MSSNCGlobal.confirmDeleteMainShown) ? 1.0 : 0.5)
+            .disabled((!self.windowFocused || self.MSSNCGlobal.confirmDeleteMainShown))
+            .opacity((!self.windowFocused || self.MSSNCGlobal.confirmDeleteMainShown) ? 0.35 : 1.0)
         })
         .frame(minWidth: 255, idealWidth: 550, minHeight: 335, idealHeight: 500)
-//        .background(VisualEffectBackground(material: NSVisualEffectView.Material.menu, blendingMode: NSVisualEffectView.BlendingMode.behindWindow))
         .padding(.top, -37)
         .toolbar(content: {
             HStack {
@@ -147,10 +134,18 @@ struct MSSNCListScreen: View {
         })
         /// FOCUS: sets main window focus
         .onReceive(self.mainWindowProperties.$focus, perform: { focused in
-            self.windowFocused = !focused
+            self.windowFocused = focused
             self.MSSNCGlobal.focusedNote = -1
         })
-        /// CREATE/COMMAND: creates new note
+        /// CREATE/DOCK: creates new note from dock
+        .onReceive(self.mainWindowProperties.$createNewNoteExternal, perform: { create in
+            if (create) {
+                let newStickyNote = PersistenceController.shared.addStickyNote(context: self.viewContext, save: true, originWindow: self.mainWindowProperties.frame)
+                createNote(createdStickyNote: newStickyNote)
+                self.mainWindowProperties.createNewNoteExternal = false
+            }
+        })
+        /// CREATE/COMMAND: creates new note from command
         .onReceive(self.MSSNCGlobal.$createNewNoteCommand, perform: { create in
             if (create) {
                 let newStickyNote = PersistenceController.shared.addStickyNote(context: self.viewContext, save: true, originWindow: self.mainWindowProperties.frame)
@@ -193,7 +188,7 @@ struct MSSNCListScreen: View {
     /// Creates new note
     /// - Parameter createdStickyNote: supplied StickyNote
     func createNote(createdStickyNote: StickyNote) {
-        let newIndex = self.noteCells.cellIndex
+        let newIndex = self.noteCells.cellCount
         createNoteObject(index: newIndex, fetchedNote: createdStickyNote)
     }
 
@@ -224,15 +219,16 @@ struct MSSNCListScreen: View {
         let noteStruct             = NoteStruct()
         noteStruct.title           = fetchedNote.title ?? "local_untitlednote".localized()
         noteStruct.lastOpened      = fetchedNote.lastOpened ?? Date()
-        noteStruct.content         = fetchedNote.content ?? ""
+        noteStruct.open            = fetchedNote.open
         noteStruct.accent          = Color(hex: getHex(fetchedNote.accent).rawValue)
         noteStruct.dimensions.posX = CGFloat(fetchedNote.posX)
         noteStruct.dimensions.posY = CGFloat(fetchedNote.posY)
         noteStruct.dimensions.winW = CGFloat(fetchedNote.sizeW)
         noteStruct.dimensions.winH = CGFloat(fetchedNote.sizeH)
+        noteStruct.content         = fetchedNote.content ?? ""
 
         let noteCellView = NoteCellView(fetchedNote: fetchedNote, note: noteStruct, cellIndex: index, newNote: false).environmentObject(winProps)
-        let noteCell     = NoteCell(noteOpen: fetchedNote.open, useAccent: Color(hex: getHex(fetchedNote.accent).rawValue), selectedAccent: Color(hex: getHex(fetchedNote.accent).rawValue), content: fetchedNote.content ?? "", cellView: noteCellView)
+        let noteCell     = NoteCell(noteOpen: fetchedNote.open, lastEdit: noteStruct.lastOpened, useAccent: Color(hex: getHex(fetchedNote.accent).rawValue), selectedAccent: Color(hex: getHex(fetchedNote.accent).rawValue), content: fetchedNote.content ?? "", cellView: noteCellView)
 
 //        print("new added index:", index)
         self.noteCells.addCell(index, noteCell)

@@ -39,8 +39,6 @@ struct PersistenceController {
     /// - Parameter context: Currently used CoreData context, NSManagedObjectContext
     /// - Returns: StickyNote
     public func addStickyNote(context: NSManagedObjectContext, save: Bool, originWindow: CGRect) -> StickyNote {
-//        let newStickNote = StickNote(title: "Untitled", lastOpened: Date(), open: false, accent: NoteColors.Yellow, content: "", x: 0, y: 0, w: 350, h: 600)
-
 //        Use origin windows x, y, w, h to position new note window to the right
         let newX = originWindow.origin.x + originWindow.size.width + 8
         let newY = originWindow.origin.y
@@ -70,7 +68,6 @@ struct PersistenceController {
     /// - Parameter context: Currently used CoreData context, NSManagedObjectContext
     /// - Returns: StickyNote
     public func duplicateStickyNote(context: NSManagedObjectContext, title: String, open: Bool, accent: Float, content: String, posX: Float, posY: Float, sizeW: Float, sizeH: Float, save: Bool) -> StickyNote {
-//        let newStickNote = StickNote(title: "Untitled", lastOpened: Date(), open: false, accent: NoteColors.Yellow, content: "", x: 0, y: 0, w: 350, h: 600)
         let dupNote        = StickyNote(context: context)
         dupNote.id         = UUID()
         dupNote.title      = title
