@@ -2,7 +2,7 @@
 //  Notes.swift
 //  MSSNC
 //
-//  Created by Trevor Bays on 7/23/21.
+//  Created by Alexander Bays on 7/23/21.
 //
 
 //import MarkdownUI

@@ -2,7 +2,7 @@
 //  NSWindow+Ext.swift
 //  MSSNC
 //
-//  Created by Trevor Bays on 7/24/21.
+//  Created by Alexander Bays on 7/24/21.
 //
 
 import SwiftUI

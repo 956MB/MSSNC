@@ -2,7 +2,7 @@
 //  NoteColors.swift
 //  MSSNC
 //
-//  Created by Trevor Bays on 7/21/21.
+//  Created by Alexander Bays on 7/21/21.
 //
 
 import SwiftUI
@@ -52,7 +52,7 @@ func getFloat(_ hex: Color) -> Float {
     }
 }
 
-/// Returns dark color if accent red/orange/yellow, light color otherwise
+/// Returns dark color if using accent colors, light color otherwise
 /// - Parameter accent: Provided accent color (red, orange, yellow, green blue, purple, pink) (Color)
 /// - Returns: light or dark color (Color)
 func ifYellowFG(accent: Color) -> Color {

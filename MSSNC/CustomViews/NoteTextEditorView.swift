@@ -2,7 +2,7 @@
 //  NoteTextEditorView.swift
 //  MSSNC
 //
-//  Created by Trevor Bays on 8/1/21.
+//  Created by Alexander Bays on 8/1/21.
 //
 
 import SwiftUI

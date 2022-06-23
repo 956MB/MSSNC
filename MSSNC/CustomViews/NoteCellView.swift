@@ -2,7 +2,7 @@
 //  NoteCellView.swift
 //  MSSNC
 //
-//  Created by Trevor Bays on 7/21/21.
+//  Created by Alexander Bays on 7/21/21.
 //
 
 import SwiftUI

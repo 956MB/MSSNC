@@ -2,7 +2,7 @@
 //  DefaultsManager.swift
 //  MSSNC
 //
-//  Created by Trevor Bays on 8/2/21.
+//  Created by Alexander Bays on 8/2/21.
 //
 
 import Foundation

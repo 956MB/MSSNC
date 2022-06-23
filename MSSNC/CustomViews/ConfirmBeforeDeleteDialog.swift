@@ -2,7 +2,7 @@
 //  ConfirmBeforeDeleteDialog.swift
 //  MSSNC
 //
-//  Created by Trevor Bays on 7/29/21.
+//  Created by Alexander Bays on 7/29/21.
 //
 
 import SwiftUI

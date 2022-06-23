@@ -2,7 +2,7 @@
 //  NoteTitleBar.swift
 //  MSSNC
 //
-//  Created by Trevor Bays on 7/25/21.
+//  Created by Alexander Bays on 7/25/21.
 //
 
 import SwiftUI

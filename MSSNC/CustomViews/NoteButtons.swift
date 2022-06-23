@@ -2,7 +2,7 @@
 //  NoteButtons.swift
 //  MSSNC
 //
-//  Created by Trevor Bays on 7/22/21.
+//  Created by Alexander Bays on 7/22/21.
 //
 
 import SwiftUI

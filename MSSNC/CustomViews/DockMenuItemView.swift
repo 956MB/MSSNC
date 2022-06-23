@@ -2,7 +2,7 @@
 //  DockMenuItemView.swift
 //  MSSNC
 //
-//  Created by Trevor Bays on 7/26/21.
+//  Created by Alexander Bays on 7/26/21.
 //
 
 import SwiftUI
