@@ -11,15 +11,10 @@ import AppKit
 public class MSSNCGlobalProperties: ObservableObject {
     static let shared = MSSNCGlobalProperties()
 
-//    @Published var confirmDelete:                Bool    = true
     @Published var saveCoreDataContext:          Bool    = false
     @Published var confirmDeleteMainShown:       Bool    = false
     @Published var confirmDeleteNoteWindowShown: Bool    = false
-//    @Published var autoSaveNote:                 Bool    = true
-//    @Published var openOnLaunch:                 Bool    = true
-//    @Published var useTitles:                    Bool    = false
     @Published var deleteNoteTitle:              String  = ""
-//    @Published var showAccent:                   Bool    = true
     @Published var focusedNote:                  Int     = -1
     @Published var lastEditedNote:               Int     = -1
     @Published var noteEdit:                     Int     = -1
@@ -49,10 +44,10 @@ public class MainWindowProperties: ObservableObject {
     @Published var createNewNoteExternal: Bool   = false
 }
 public class NoteWindowProperties: ObservableObject {
-    @Published var frame:    CGRect = .zero
-    @Published var focus:    Bool   = false
-    @Published var noteOpen: Bool   = false
-    @Published var windowOpenCheck: Bool = false
+    @Published var frame:           CGRect = .zero
+    @Published var hasFocus:        Bool   = false
+    @Published var noteOpen:        Bool   = false
+    @Published var windowOpenCheck: Bool   = false
 }
 
 
@@ -78,7 +73,6 @@ struct NoteCell: Identifiable {
 class NoteCells: ObservableObject {
     static let shared = NoteCells(cells: [Int : NoteCell]())
 
-//    @Published var cells:     [NoteCell]
     @Published var cells: [Int : NoteCell]
     @Published var cellCount: Int = 0
 
@@ -96,7 +90,7 @@ class NoteCells: ObservableObject {
         self.cellCount += 1
     }
     func deleteCell(_ index: Int) {
-        self.cells[index] = nil
+        self.cells.removeValue(forKey: index)
     }
     func duplicateCell(_ index: Int) {
         self.cellCount += 1
@@ -108,7 +102,7 @@ class NoteCells: ObservableObject {
 
     func getCellsSorted() -> [NoteCell] {
         // MARK: - potential point of performance deg, sorting dict and appending to new array every list update could be bad
-        // could myabe just give back already sorted array if no new note added, instead of sorting again every time and returning that
+        // could maybe just give back already sorted array if no new note added, instead of sorting again every time and returning that
         let sortedCells = self.cells.sorted(by: { $0.value.lastEdit > $1.value.lastEdit })
         var cells: [NoteCell] = []
         for (_, value) in sortedCells {

@@ -54,8 +54,8 @@ public func newNoteWindow(noteWindowProps: NoteWindowProperties, note: Binding<N
 ///   - noteWindowProps: NoteWindowProperties
 ///   - window: NSWindow
 func createWindowPropertiesObservers(noteWindowProps: NoteWindowProperties, window: NSWindow) {
-    NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification, object: window, queue: nil) { _ in noteWindowProps.focus = false }
-    NotificationCenter.default.addObserver(forName: NSWindow.didBecomeKeyNotification, object: window, queue: nil) { _ in noteWindowProps.focus = true }
+    NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification, object: window, queue: nil) { _ in noteWindowProps.hasFocus = false }
+    NotificationCenter.default.addObserver(forName: NSWindow.didBecomeKeyNotification, object: window, queue: nil) { _ in noteWindowProps.hasFocus = true }
     NotificationCenter.default.addObserver(forName: NSView.frameDidChangeNotification, object: nil, queue: nil) { _ in noteWindowProps.frame = window.frame }
     NotificationCenter.default.addObserver(forName: NSWindow.didMoveNotification, object: window, queue: nil) { _ in noteWindowProps.frame = window.frame }
     NotificationCenter.default.addObserver(forName: NSWindow.willCloseNotification, object: window, queue: nil) { _ in noteWindowProps.noteOpen = false }

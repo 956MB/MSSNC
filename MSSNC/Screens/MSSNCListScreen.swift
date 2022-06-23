@@ -160,11 +160,10 @@ struct MSSNCListScreen: View {
                 self.MSSNCGlobal.deleteNoteWindow       = -1
                 self.MSSNCGlobal.confirmDeleteNoteIndex = -1
 
-                // context actions currently not using
-//                print("before delete cell", deleteCellIndex, self.noteCells.cellCount, self.noteCells.cells)
+//                print("before delete cell: ", deleteCellIndex, self.noteCells.cellCount, Array(self.noteCells.cells.keys))
                 let stickyNoteDel = self.stickyNotes[deleteCellIndex]
-                self.viewContext.delete(stickyNoteDel)
                 self.noteCells.deleteCell(deleteCellIndex)
+                self.viewContext.delete(stickyNoteDel)
                 self.MSSNCGlobal.saveCoreDataContext = true
             }
         })
@@ -187,7 +186,7 @@ struct MSSNCListScreen: View {
     /// Creates new note
     /// - Parameter createdStickyNote: supplied StickyNote
     func createNote(createdStickyNote: StickyNote) {
-        let newIndex = self.noteCells.cellCount
+        let newIndex = self.noteCells.cellCount + 1
         createNoteObject(index: newIndex, fetchedNote: createdStickyNote)
     }
 
@@ -212,7 +211,7 @@ struct MSSNCListScreen: View {
     func createNoteObject(index: Int, fetchedNote: StickyNote) {
         let winProps      = NoteWindowProperties()
         winProps.noteOpen = fetchedNote.open
-        winProps.focus    = fetchedNote.open
+        winProps.hasFocus    = false
         winProps.frame    = CGRect(x: fetchedNote.posX.hashValue, y: fetchedNote.posY.hashValue, width: fetchedNote.sizeW.hashValue, height: fetchedNote.sizeH.hashValue)
 
         let noteStruct             = NoteStruct()
@@ -229,7 +228,6 @@ struct MSSNCListScreen: View {
         let noteCellView = NoteCellView(fetchedNote: fetchedNote, note: noteStruct, cellIndex: index, newNote: false).environmentObject(winProps)
         let noteCell     = NoteCell(noteOpen: fetchedNote.open, lastEdit: noteStruct.lastOpened, useAccent: Color(hex: getHex(fetchedNote.accent).rawValue), selectedAccent: Color(hex: getHex(fetchedNote.accent).rawValue), content: fetchedNote.content ?? "", cellView: noteCellView)
 
-//        print("new added index:", index)
         self.noteCells.addCell(index, noteCell)
     }
 }

@@ -152,7 +152,7 @@ struct NoteCellView: View {
             }
         })
         /// FOCUS: note gains / loses focus
-        .onReceive(self.noteWindowProperties.$focus, perform: { focused in
+        .onReceive(self.noteWindowProperties.$hasFocus, perform: { focused in
             // sets toolbar when focused, removes toolbar when not unfocused
             if (focused) {
                 let customToolbar              = NSToolbar()
@@ -275,6 +275,7 @@ struct NoteCellView: View {
         .onAppear {
             // MARK: MAYBE fixed bug of opening multiple windows for cells
             if (self.noteWindowProperties.noteOpen) {
+                self.noteWindowProperties.hasFocus = false
                 self.pairedNoteWindow = newNoteWindow(noteWindowProps: self.noteWindowProperties, note: self.$note, title: self.$title, useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, noteContent: self.$cellContent, cellIndex: self.$cellIndex)
             }
         }

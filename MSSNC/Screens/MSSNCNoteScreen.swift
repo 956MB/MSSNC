@@ -139,7 +139,7 @@ struct MSSNCNoteScreen: View {
         /// RECEIVERS
         ///
         /// FOCUS: closes submenu if note loses focus
-        .onReceive(self.noteWindowProperties.$focus, perform: { focused in
+        .onReceive(self.noteWindowProperties.$hasFocus, perform: { focused in
             if (self.noteFocused && !focused && self.subMenuShown) {
                 self.subMenuShown = false
             }
