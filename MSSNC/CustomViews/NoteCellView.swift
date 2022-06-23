@@ -79,7 +79,7 @@ struct NoteCellView: View {
                                 if (!self.MSSNCGlobal.confirmDeleteMainShown) { self.cellCornerHovered.toggle() }
                             }
                             .popover(isPresented: self.$isPopover, arrowEdge: .bottom) {
-                                NoteCellPopover(openAction: {self.checkOpenClose()}, duplicateAction: {self.MSSNCGlobal.duplicateNoteCellIndex = self.cellIndex}, renameAction: {self.openNoteRename()}, deleteAction: {self.checkConfirmDeletePopover()})
+                                NoteCellPopover(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, openAction: {self.checkOpenClose()}, duplicateAction: {self.MSSNCGlobal.duplicateNoteCellIndex = self.cellIndex}, renameAction: {self.openNoteRename()}, deleteAction: {self.checkConfirmDeletePopover()})
                                     .environmentObject(self.noteWindowProperties)
                             }.buttonStyle(DefaultButtonStyle())
                     }
@@ -244,6 +244,8 @@ struct NoteCellView: View {
         .onChange(of: self.selectedAccent, perform: { newAccent in
             self.note.accent        = newAccent
             self.fetchedNote.accent = getFloat(newAccent)
+            self.MSSNCGlobal.noteEdit = self.cellIndex
+            self.MSSNCGlobal.saveCoreDataContext = true
         })
         /// DUPLICATE CELL: duplicates current note cell matching self.cellIndex
         .onReceive(self.MSSNCGlobal.$duplicateNoteCellIndex, perform: { duplicate in
