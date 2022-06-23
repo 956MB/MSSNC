@@ -20,7 +20,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             window.isReleasedWhenClosed       = false
             window.setFrameAutosaveName("StickyNotes.List")
 
+            // MARK: setting main window frame here immediately solves issue of window frame not being ready on start unil moved/resized
             MainWindowProperties.shared.mainWindow = window
+            MainWindowProperties.shared.frame = window.frame
 
             NotificationCenter.default.addObserver(forName: NSWindow.didResignKeyNotification, object: window, queue: nil) { _ in MainWindowProperties.shared.focus = false }
             NotificationCenter.default.addObserver(forName: NSWindow.didBecomeKeyNotification, object: window, queue: nil) { _ in MainWindowProperties.shared.focus = true }
