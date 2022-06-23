@@ -38,6 +38,7 @@
 "local_usetitles"                = "Show titles";
 "local_previewlines"             = "Note preview line count";
 "local_settingscolor"            = "Colors";
+"local_accentcolor"              = "Accent color";
 "local_settingsappearance"       = "Appearance";
 "local_settingslinelimit"        = "Cell line limit";
 "local_settingstextmode"         = "Text mode";

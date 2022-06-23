@@ -38,6 +38,7 @@
 "local_usetitles"                = "Visa titlar";
 "local_previewlines"             = "Notera förhandsgranskningslinjen";
 "local_settingscolor"            = "Färger";
+"local_accentcolor"              = "Accentfärg";
 "local_settingsappearance"       = "Utseende";
 "local_settingslinelimit"        = "Cellinjegräns";
 "local_settingstextmode"         = "Textläge";

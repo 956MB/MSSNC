@@ -38,6 +38,7 @@
 "local_usetitles"                = "Näytä muistiin liittyvät nimikkeet";
 "local_previewlines"             = "Huomautus Esikatselu Line Count";
 "local_settingscolor"            = "Värit";
+"local_accentcolor"              = "Korostusväri";
 "local_settingsappearance"       = "Ulkomuoto";
 "local_settingslinelimit"        = "Solulinjan raja";
 "local_settingstextmode"         = "Tekstitila";

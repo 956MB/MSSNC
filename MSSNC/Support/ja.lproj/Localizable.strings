@@ -38,6 +38,7 @@
 "local_usetitles"                = "ノートタイトルを表示します";
 "local_previewlines"             = "注：プレビューラインカウント";
 "local_settingscolor"            = "色";
+"local_accentcolor"              = "アクセントの色";
 "local_settingsappearance"       = "外観";
 "local_settingslinelimit"        = "細胞株の制限";
 "local_settingstextmode"         = "テキストモード";

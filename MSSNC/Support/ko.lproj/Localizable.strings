@@ -38,6 +38,7 @@
 "local_usetitles"                = "메모 제목 표시";
 "local_previewlines"             = "메모 미리보기 줄 수";
 "local_settingscolor"            = "그림 물감";
+"local_accentcolor"              = "강조 색상";
 "local_settingsappearance"       = "모습";
 "local_settingslinelimit"        = "세포주 한계";
 "local_settingstextmode"         = "텍스트 모드";
