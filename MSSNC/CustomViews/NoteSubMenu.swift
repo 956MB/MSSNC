@@ -26,9 +26,10 @@ struct NoteSubMenu: View {
             }
             .padding(8)
         }
-        .frame(minWidth: 0, maxWidth: .infinity)
+        .frame(minWidth: 0, maxWidth: 363)
         .background(RoundedCorners(tl: 7, tr: 7, bl: 7, br: 7).fill(Color("SubMenuButtonContainerBG")))
-        .padding([.leading, .trailing], 9).padding([.bottom], 8)
+        .padding([.leading, .trailing], 9)
+        .padding([.bottom], 8)
         .padding([.top], self.def.useNoteAccents ? 0 : 48)
     }
 }

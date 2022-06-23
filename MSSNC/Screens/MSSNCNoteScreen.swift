@@ -43,27 +43,23 @@ struct MSSNCNoteScreen: View {
                 Color.clear
                     /// not editable note content text
                     .overlay(
-                        (self.subMenuShown || self.MSSNCGlobal.confirmDeleteNoteWindowShown)
-                            ?
+                        (self.subMenuShown || self.MSSNCGlobal.confirmDeleteNoteWindowShown) ?
+
                         Text(self.note.content)
                             .font(.system(size: self.fontSize))
-                            .padding(.leading, 5.0)
                             .opacity(self.subMenuShown ? 0.4 : 1.0)
-                            .padding([.leading, .trailing], 5).padding(.bottom, (noteWindowProperties.frame.size.width >= 272 && self.noteFocused) ? 62 : 11)
-                            :
-                        nil, alignment: .topLeading
+                            .padding([.leading, .trailing], 15).padding(.bottom, 15)
+
+                        : nil, alignment: .topLeading
                     )
                     /// editable note content TextEditor
                     .overlay(
-                        (self.subMenuShown || self.MSSNCGlobal.confirmDeleteNoteWindowShown)
-                            ?
-                        nil
-                            :
+                        (self.subMenuShown || self.MSSNCGlobal.confirmDeleteNoteWindowShown) ? nil :
 //                        NoteTextEditorView(noteContent: self.$noteContent, subMenuShown: self.$subMenuShown)
                         TextEditor(text: self.$noteContent)
                             .font(.system(size: self.fontSize))
                             .opacity(self.subMenuShown ? 0.4 : 1.0)
-                            .padding([.leading, .trailing], 5).padding(.bottom, (noteWindowProperties.frame.size.width >= 272 && self.noteFocused) ? 62 : 11)
+                            .padding([.leading, .trailing], 10).padding(.bottom, 15)
                             .onChange(of: self.noteContent, perform: { _ in
                                 if (self.note.open) {
                                     self.MSSNCGlobal.noteEdit = self.cellIndex
@@ -77,16 +73,23 @@ struct MSSNCNoteScreen: View {
             VStack(spacing: 0) {
                 if (noteWindowProperties.frame.size.width >= 250 && self.noteFocused) {
                     if (self.subMenuShown) {
-                        VStack {
-                            if (self.def.useNoteAccents) {
-                                NoteAccentSelector(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, subMenuShown: self.$subMenuShown)
-                                    .environmentObject(self.MSSNCGlobal)
+                        HStack {
+                            VStack {
+                                /// accent color selector
+                                if (self.def.useNoteAccents) {
+                                    NoteAccentSelector(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, subMenuShown: self.$subMenuShown)
+                                        .environmentObject(self.MSSNCGlobal)
+                                }
+                                /// notes list and delete note
+                                NoteSubMenu(subMenuShown: self.$subMenuShown, cellIndex: self.$cellIndex, listAction: {showListWindowAndCloseSubMenu()}, deleteAction:{self.checkConfirmDeleteSubMenu()})
+                                    .environmentObject(self.noteWindowProperties)
                             }
-                            NoteSubMenu(subMenuShown: self.$subMenuShown, cellIndex: self.$cellIndex, listAction: {showListWindowAndCloseSubMenu()}, deleteAction:{self.checkConfirmDeleteSubMenu()})
-                                .environmentObject(self.noteWindowProperties)
+                            .frame(maxWidth: 363, alignment: .trailing)
+                            .cornerRadius(7)
+                            .background(RoundedCorners(tl: 7, tr: 7, bl: 7, br: 7).fill(Color(hex: 0x1B1B1B)))
                         }
-                        .cornerRadius(7)
-                        .background(RoundedCorners(tl: 7, tr: 7, bl: 7, br: 7).fill(Color(hex: 0x1B1B1B)))
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .padding(.bottom, 15) // 48
 
                         HStack {
                             Spacer()
@@ -100,8 +103,7 @@ struct MSSNCNoteScreen: View {
                     Spacer()
                 }
             }
-            .padding(.bottom, 48)
-            .frame(maxHeight: .infinity)
+            .frame(maxWidth: .infinity)
 
             // MARK: currently no purpose for edit bar
             /// note edit bar

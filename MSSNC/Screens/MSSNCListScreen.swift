@@ -161,12 +161,11 @@ struct MSSNCListScreen: View {
                 self.MSSNCGlobal.confirmDeleteNoteIndex = -1
 
                 // context actions currently not using
+//                print("before delete cell", deleteCellIndex, self.noteCells.cellCount, self.noteCells.cells)
                 let stickyNoteDel = self.stickyNotes[deleteCellIndex]
                 self.viewContext.delete(stickyNoteDel)
-                self.MSSNCGlobal.saveCoreDataContext = true
-
-//                print("before delete cell", deleteCellIndex, self.noteCells.cellIndex, self.noteCells.cells.count)
                 self.noteCells.deleteCell(deleteCellIndex)
+                self.MSSNCGlobal.saveCoreDataContext = true
             }
         })
         /// DUPLICATE: duplicates note window with supplied cellIndex

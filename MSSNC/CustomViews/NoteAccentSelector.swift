@@ -25,9 +25,10 @@ struct NoteAccentSelector: View {
                 AccentButtonView(useAccent: self.$useAccent, selectedAccent: self.$selectedAccent, subMenuShown: self.$subMenuShown, accentId: Color(hex: NoteColors.Pink.rawValue), accentKey: "local_accentpink", _tr: 7, _br: 7)
             }
         }
-        .frame(minWidth: 0, maxWidth: .infinity)
+        .frame(minWidth: 0, maxWidth: 363)
         .background(RoundedCorners(tl: 7, tr: 7, bl: 7, br: 7).fill(Color("SubMenuButtonContainerBG")))
-        .padding([.leading, .trailing], 9).padding(.top, 46)
+        .padding([.leading, .trailing], 9)
+        .padding(.top, 46)
     }
 }
 
