@@ -44,11 +44,11 @@ struct MSSNCAboutScreen: View {
 
                                 Spacer()
 
-                                /// github repo button
-                                Button("Github", action: {
-                                    openURL(URL(string: "https://github.com/956MB/MSSNC")!)
-                                })
-                                .buttonStyle(DefaultButtonStyle())
+//                                /// github repo button
+//                                Button("Github", action: {
+//                                    openURL(URL(string: "https://github.com/956MB/MSSNC")!)
+//                                })
+//                                .buttonStyle(DefaultButtonStyle())
                             }
                             /// copyright info
                             VStack(alignment: .leading) {
