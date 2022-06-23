@@ -56,7 +56,7 @@ func getFloat(_ hex: Color) -> Float {
 /// - Parameter accent: Provided accent color (red, orange, yellow, green blue, purple, pink) (Color)
 /// - Returns: light or dark color (Color)
 func ifYellowFG(accent: Color) -> Color {
-    return ((accent == Color(hex: NoteColors.Red.rawValue) || accent == Color(hex: NoteColors.Orange.rawValue) || accent == Color(hex: NoteColors.Yellow.rawValue)) && DefaultsManager.shared.useNoteAccents) ? Color("ToolbarButtonAccentFGDark") : Color.primary.opacity(0.65)
+    return (DefaultsManager.shared.useNoteAccents ? Color("ToolbarButtonAccentFGDark") : Color.primary.opacity(0.65))
 }
 
 func ifYellowBG(accent: Color) -> Color {

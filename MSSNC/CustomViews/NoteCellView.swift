@@ -235,11 +235,6 @@ struct NoteCellView: View {
             self.note.title        = newTitle
             self.fetchedNote.title = newTitle
         })
-        /// CONTENT: sets note content on change
-//        .onChange(of: self.cellContent, perform: { newContent in
-//            self.note.content        = newContent
-//            self.fetchedNote.content = newContent
-//        })
         /// ACCENT: sets note accent on change
         .onChange(of: self.selectedAccent, perform: { newAccent in
             self.note.accent        = newAccent
